@@ -27,14 +27,28 @@
             </section>
 
             <section class="wood-section">
-                <p style="font-style: italic; color: #888; margin-bottom: 10px;">Explore through Wei Yi's Diary</p>
-                
-                <div class="diary-entry">
-                    <p>"I can still hear the scratching behind the walls..."</p>
-                    <div style="background: #000; height: 150px; margin-top: 15px;">
-                        <p style="color: #444; padding-top: 60px;">[SCRIBBLE ART]</p>
+            <section class="diary-section">
+                <p class="journal-text">Explore through Wei Yi's Diary</p>
+
+                <div class="diary-page">
+                    <div class="scribble-bg"></div> <div class="diary-scrap photo-scrap" onclick="openLore('photo')">
+                        <div class="tape"></div>
+                        <p>?</p>
+                    </div>
+
+                    <div class="diary-scrap note-scrap" onclick="openLore('note')">
+                        <p>HELP ME</p>
                     </div>
                 </div>
+
+                <div id="lorePopup" class="lore-overlay" style="display:none;" onclick="closeLore()">
+                    <div class="lore-card" onclick="event.stopPropagation()">
+                        <div class="inspection-item">[SCRAWLED IMAGE]</div>
+                        <p id="loreText" class="lore-thought">...</p>
+                        <button class="btn-putback" onclick="closeLore()">PUT BACK</button>
+                    </div>
+                </div>
+            </section>
                 
                 <p class="title-horror" style="font-size: 1.5rem; color: #fff;">Can you SURVIVE?</p>
             </section>
@@ -57,6 +71,8 @@
             </footer>
         </main>
     </div>
+
+    
 
 </body>
 </html>
