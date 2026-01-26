@@ -1,4 +1,5 @@
-/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Special+Elite&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,119 +7,128 @@
 }
 
 body {
-    background-color: #050505; /* Deep black to blend with vignette */
+    background-color: #050505;
     color: #f5f5f5;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Special Elite', serif; /* Typewriter feel */
     overflow-x: hidden;
 }
 
-/* 1. Immersive Vignette Overlay */
+/* 1. The Immersive Overlay */
 .vignette {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    box-shadow: inset 0 0 150px rgba(0,0,0,0.95);
-    pointer-events: none; /* Allows user to click buttons underneath */
+    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
     z-index: 1000;
 }
 
-/* 2. Mobile Container - Fixing the 'Squished' feel */
+/* 2. Container */
 .mobile-container {
     max-width: 450px;
     margin: 0 auto;
     background-color: #0d0d0d;
     min-height: 100vh;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
 }
 
-/* 3. Navigation */
+/* 3. Navigation (Sandwich Menu) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.9);
     position: sticky;
     top: 0;
-    background: rgba(13, 13, 13, 0.8);
-    backdrop-filter: blur(5px);
-    z-index: 100;
+    z-index: 1100;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .auth-link {
-    color: #f5f5f5;
+    border: 1px solid #444;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.7rem;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #ccc;
 }
 
-/* 4. Immersive Sections */
-section {
-    padding: 100px 25px; /* Large vertical padding for immersion */
+/* 4. Hero Section - The "Torn" Look */
+.hero-immersive {
+    height: 90vh;
+    background: url('https://www.transparenttextures.com/patterns/dark-matter.png'), #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    border-bottom: 1px solid #1a1a1a;
+    padding: 20px;
+    border-bottom: 10px solid #000;
 }
 
 .title-horror {
-    font-size: 3rem;
-    margin: 30px 0;
-    letter-spacing: 5px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4rem;
+    color: #b30000; /* Blood Red */
+    line-height: 0.8;
+    margin: 20px 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
 }
 
-.journal-text {
-    font-family: 'Georgia', serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    line-height: 1.8;
-    color: #999;
+/* 5. Textured Sections */
+.wood-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    padding: 60px 20px;
+    text-align: center;
 }
 
-/* 5. Feature Items */
-.feature-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 50px;
-    gap: 20px;
+.diary-entry {
+    background: #e0d6c3; /* Old Paper color */
+    color: #222;
+    padding: 30px;
+    margin: 20px 0;
+    transform: rotate(-2deg); /* Slightly skewed for "hand-placed" feel */
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    font-family: 'Special Elite', serif;
+    clip-path: polygon(0% 0%, 100% 5%, 98% 95%, 2% 100%); /* Ragged edges */
 }
 
-.feature-item.reverse {
-    flex-direction: row-reverse;
-}
-
-.feature-label {
-    font-size: 1.1rem;
+/* 6. Buttons */
+.btn-horror {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 12px 40px;
+    border-radius: 30px;
+    margin-top: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* 6. Placeholders */
-.placeholder-img, .placeholder-video {
-    background-color: #1a1a1a;
-    border: 1px dashed #333;
+.btn-horror:hover {
+    background: #b30000;
+    border-color: #b30000;
+}
+
+/* 7. Image "Cutouts" */
+.cutout-frame {
+    width: 80%;
+    margin: 20px auto;
+    border: 8px solid #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background: #222;
+    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #555;
+    transform: rotate(3deg);
 }
-
-.placeholder-img.large { height: 450px; width: 100%; }
-.placeholder-img.small { width: 45%; height: 120px; }
-.placeholder-video { height: 250px; width: 100%; background: #000; }
-
-/* 7. Buttons */
-button {
-    cursor: pointer;
-    font-family: inherit;
-    padding: 15px 30px;
-    border: none;
-    transition: 0.3s ease;
-}
-
-.btn-primary { background: #f5f5f5; color: #000; width: 100%; font-weight: bold; }
-.btn-secondary { background: transparent; border: 1px solid #f5f5f5; color: #f5f5f5; }
-
-.btn-primary:hover { background: #ccc; }
