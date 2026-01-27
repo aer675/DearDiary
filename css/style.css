@@ -1,5 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Special+Elite&display=swap');
+/* =========================================
+   1. FONTS & VARIABLES
+   ========================================= */
+/* --- Custom Fonts --- */
+@font-face {
+    font-family: 'Permanent Marker';
+    src: url('fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Just Me Again Down Here';
+    src: url('fonts/JustMeAgainDownHere-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Special Elite';
+    src: url('fonts/SpecialElite-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================
+   2. GLOBAL RESETS & BASE STYLES
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +35,7 @@
 body {
     background-color: #050505;
     color: #f5f5f5;
-    font-family: 'Special Elite', serif; /* Typewriter feel */
+    font-family: 'Special Elite', serif; 
     overflow-x: hidden;
 }
 
@@ -35,7 +61,9 @@ body {
     border-right: 1px solid #222;
 }
 
-/* 3. Navigation (Sandwich Menu) */
+/* =========================================
+   3. NAVBAR & NAVIGATION
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
