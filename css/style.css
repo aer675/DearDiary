@@ -252,3 +252,55 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
 }
+
+/* Positioning the diary collage */
+.diary-collage {
+    position: relative;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.paper-base {
+    width: 100%;
+    display: block;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.7);
+}
+
+/* Creating the Polaroid frame and rotation */
+.scrap {
+    position: absolute;
+    background: #fff;
+    padding: 5px 5px 15px 5px;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+.photo-top-right {
+    top: -15px;
+    right: -10px;
+    width: 110px;
+    transform: rotate(12deg);
+}
+
+.photo-bottom-left {
+    bottom: 30px;
+    left: -15px;
+    width: 120px;
+    transform: rotate(-10deg);
+}
+
+/* --- Lore Inspection Polish --- */
+.lore-overlay:target {
+    display: flex;
+    backdrop-filter: blur(8px); 
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lore-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 30px;
+    width: 85%;
+    max-width: 350px;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
+}
