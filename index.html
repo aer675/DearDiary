@@ -41,31 +41,22 @@
                 <button class="btn-horror">Buy Now</button>
             </section>
 
-            <section class="wood-section">
-            <section class="diary-section">
-                <p class="journal-text">Explore through Wei Yi's Diary</p>
-
-                <div class="diary-page">
-                    <div class="scribble-bg"></div> <div class="diary-scrap photo-scrap" onclick="openLore('photo')">
-                        <div class="tape"></div>
-                        <p>?</p>
-                    </div>
-
-                    <div class="diary-scrap note-scrap" onclick="openLore('note')">
-                        <p>What</p>
-                    </div>
-                </div>
-
-                <div id="lorePopup" class="lore-overlay" style="display:none;" onclick="closeLore()">
-                    <div class="lore-card" onclick="event.stopPropagation()">
-                        <div class="inspection-item">[SCRAWLED IMAGE]</div>
-                        <p id="loreText" class="lore-thought">...</p>
-                        <button class="btn-putback" onclick="closeLore()">PUT BACK</button>
-                    </div>
-                </div>
-            </section>
+            <section class="wood-section diary-section">
+                <p class="journal-hint">Explore Through Wei Yi's Diary</p>
                 
-                <p class="title-horror" style="font-size: 1.5rem; color: #fff;">Can you SURVIVE?</p>
+                <div class="diary-collage">
+                    <img src="img/diary-page-bg.jpg" class="paper-base" alt="Diary Page">
+
+                    <a href="#item1" class="scrap photo-top-right">
+                        <img src="img/photo1.png" alt="Memory 1">
+                    </a>
+                    
+                    <a href="#item2" class="scrap photo-bottom-left">
+                        <img src="img/photo2.png" alt="Memory 2">
+                    </a>
+                </div>
+
+                <h2 class="title-horror small-text">CAN YOU SURVIVE?</h2>
             </section>
 
             <section class="wood-section" style="background: #000;">
