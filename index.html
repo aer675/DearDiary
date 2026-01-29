@@ -77,15 +77,24 @@
     </div>
 
     <div id="item1" class="lore-overlay">
-        <a href="#" class="overlay-close-area"></a> 
+        <a href="javascript:void(0)" class="overlay-close-area" onclick="closeLore()"></a> 
         
         <div class="lore-card">
             <img src="img/photo1.png" alt="Inspection View">
             <p class="lore-thought">"I can still hear the scratching behind the walls..."</p>
             
-            <a href="#" class="btn-horror" style="font-size: 0.8rem; display: inline-block;">CLOSE</a>
+            <button class="btn-horror" onclick="closeLore()" style="font-size: 0.8rem;">CLOSE</button>
         </div>
     </div>
+    <script>
+    function closeLore() {
+        // This force-hides the overlay immediately
+        document.getElementById("item1").style.display = "none";
+        
+        // This cleans up the URL so it doesn't stay on #item1
+        window.location.hash = "";
+    }
+    </script>
 
 </body>
 </html>
