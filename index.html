@@ -14,18 +14,16 @@
     <div class="mobile-container">
     <header>
         <nav class="navbar">
-            <div class="menu-icon">☰</div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
             <a href="login.html" class="auth-link">Login / Signup</a>
-            <ul class="nav-links">
-                <li><a href="world.html">World</a></li>
-                <li><a href="guides.html">Guides</a></li>
-                <li><a href="merch.html">Merch</a></li>
-                <li><a href="hub.html">Community Hub</a></li>
-            </ul>
-            <div class="hamburger" onclick="toggleMobileMenu()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        </nav>
+
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="world.html">World</a>
+            <a href="merch.html">Merch</a>
+            <a href="hub.html">Community Hub</a>
         </div>
         </nav>
     </header>
@@ -78,7 +76,16 @@
         </main>
     </div>
 
-    
+    <div id="item1" class="lore-overlay">
+        <a href="#" class="overlay-close-area"></a> 
+        
+        <div class="lore-card">
+            <img src="img/photo1.png" alt="Inspection View">
+            <p class="lore-thought">"I can still hear the scratching behind the walls..."</p>
+            
+            <a href="#" class="btn-horror" style="font-size: 0.8rem; display: inline-block;">CLOSE</a>
+        </div>
+    </div>
 
 </body>
 </html>

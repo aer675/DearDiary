@@ -304,3 +304,62 @@ body {
     max-width: 350px;
     box-shadow: 0 0 50px rgba(0,0,0,1);
 }
+
+/* --- Side Navigation --- */
+.side-nav {
+    height: 100%;
+    width: 0; /* Hidden by default */
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    background-color: #0d0d0d;
+    overflow-x: hidden;
+    transition: 0.5s; /* Smooth sliding effect */
+    padding-top: 60px;
+}
+
+.side-nav a {
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #818181;
+    display: block;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.side-nav a:hover { color: #b30000; }
+
+.side-nav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* --- Section Spacing (The Figma Look) --- */
+.hero-immersive {
+    background-size: cover;
+    background-position: center;
+}
+
+.diary-section {
+    padding-bottom: 100px; /* Space before the next horror segment */
+}
+
+/* Ensure the close area covers the whole screen behind the card */
+.overlay-close-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+    z-index: -1; /* Sits behind the lore-card */
+}
+
+.btn-horror:hover {
+    background-color: #b30000;
+    color: #fff;
+    cursor: pointer;
+}
