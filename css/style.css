@@ -120,14 +120,11 @@ body {
 }
 
 /* =========================================
-   4. HERO SECTION
+   4. HERO SECTION (CLEAN VERSION)
    ========================================= */
 .hero-immersive {
     height: 90vh;
-    background: 
-        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-        url('https://www.transparenttextures.com/patterns/dark-matter.png'), 
-        #1a1a1a;
+    background: #000; /* Solid black background */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,40 +134,42 @@ body {
     position: relative;
 }
 
+/* Remove the before pseudo-element (texture overlay) */
 .hero-immersive::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-    opacity: 0.2;
-    pointer-events: none;
+    display: none;
 }
 
 .title-horror {
     font-family: 'Permanent Marker', cursive;
-    font-size: 4rem;
+    font-size: 4.5rem; /* Slightly larger */
     color: #b30000;
-    line-height: 0.8;
-    margin: 20px 0;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    line-height: 0.85;
+    margin: 20px 0 10px 0; /* Less bottom margin */
+    text-shadow: 3px 3px 15px rgba(0,0,0,0.9);
+    letter-spacing: 1px;
 }
 
-/* =========================================
-   5. BUTTONS
-   ========================================= */
+.developer-text {
+    font-family: 'Special Elite', serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
 .btn-horror {
     background: transparent;
     color: #fff;
     border: 1px solid #444;
     padding: 12px 40px;
     border-radius: 30px;
-    margin-top: 20px;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    font-family: 'Special Elite', serif;
 }
 
 .btn-horror:hover {
@@ -336,19 +335,41 @@ body {
     display: block;
 }
 
-/* Precise positioning to match your Figma */
+.diary-section {
+    padding: 80px 20px; /* Added more top/bottom padding */
+    background: #050505;
+    text-align: center;
+}
+
+.diary-collage {
+    position: relative;
+    width: 90%; 
+    margin: 0 auto;
+    /* This ensures the section stays tall enough for the scraps */
+    min-height: 500px; 
+}
+
+.paper-base {
+    width: 110%; 
+    margin-left: -5%; 
+    display: block;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
+}
+
 .photo-top-right {
-    top: -15px;
-    right: -10px;
-    width: 110px;
+    top: -40px;
+    right: -20px;
+    width: 220px; 
     transform: rotate(12deg);
+    z-index: 10;
 }
 
 .photo-bottom-left {
-    bottom: 30px;
-    left: -15px;
-    width: 120px;
-    transform: rotate(-10deg);
+    bottom: 30px; 
+    left: -5px;   
+    width: 140px;
+    transform: rotate(-8deg);
+    z-index: 11;
 }
 
 .lore-hint {
@@ -400,9 +421,15 @@ body {
 
 .scrap {
     position: absolute;
-    /* Remove 'background: #fff;' so the transparency shows through */
-    padding: 0; /* Adjust padding if you want a border, otherwise set to 0 */
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+    background: transparent; 
+    padding: 0; 
+    border: none; 
+    box-shadow: 4px 4px 15px rgba(0,0,0,0); 
     z-index: 5;
     text-decoration: none;
+}
+
+.scrap img {
+    width: 100%;
+    display: block;
 }
