@@ -25,7 +25,6 @@
             <a href="merch.html">Merch</a>
             <a href="hub.html">Community Hub</a>
         </div>
-        </nav>
     </header>
 
 <!--Main Content Section-->
@@ -89,6 +88,23 @@
         document.getElementById("item1").style.display = "none";
         
          window.location.hash = "";
+    }
+    </script>
+
+        <script>
+    // Navigation toggle function
+    function toggleMenu() {
+        const sideNav = document.getElementById('sideNav');
+        if (sideNav.style.width === '250px' || sideNav.style.width === '') {
+            sideNav.style.width = '0';
+        } else {
+            sideNav.style.width = '250px';
+        }
+    }
+
+    function closeLore() {
+        document.getElementById("item1").style.display = "none";
+        window.location.hash = "";
     }
     </script>
 
