@@ -29,27 +29,34 @@
 
 <!--Main Content Section-->
         <main>
-            <section class="hero-immersive">
-                <div class="placeholder-img">
-                    <img src="path_to_your_logo.png" style="width: 150px; filter: grayscale(1) contrast(1.5);" alt="">
-                </div>
+            <section class="hero-immersive" style="background: 
+            linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                url('images/background/main.jpg') center/cover no-repeat;">
+
                 <h1 class="title-horror">DEAR<br>DIARY</h1>
                 <p style="font-size: 0.7rem; letter-spacing: 3px;">DEVELOPED BY THIRD HOUR CO.</p>
                 <button class="btn-horror">Buy Now</button>
             </section>
 
             <section class="diary-section">
-                <h2 class="section-subtitle">Explore Through Wei Yin's Diary</h2>
+                <h2 class="section-subtitle">Explore Through Wei Yi's Diary</h2>
                 
-                <div class="diary-teaser">
-                    <div class="diary-page-teaser">
-                        <p class="diary-text">"November 13th. The scratching continues. I can hear it through the walls..."</p>
-                        <div class="interactive-hint">
-                            <span class="question-mark">?</span>
-                            <p>Click to discover clues</p>
-                        </div>
-                    </div>
+                <div class="diary-collage">
+                    <img src="images/background/diary.jpg" class="paper-base" alt="Diary Page">
+
+                    <a href="#item1" class="scrap photo-top-right" onclick="openLore()">
+                        <img src="images/interface/polaroid.png" alt="Memory 1">
+                    </a>
+                    
+                    <a href="#item1" class="scrap photo-bottom-left" onclick="openLore()">
+                        <img src="images/interface/scribbles.png" alt="Memory 2">
+                    </a>
+                    
+                    <div class="lore-hint">?</div>
                 </div>
+
+                <h2 class="title-horror small-title">CAN YOU SURVIVE?</h2>
+            </section>
                 
                 <h2 class="title-horror small-title">CAN YOU SURVIVE?</h2>
             </section>
@@ -84,14 +91,7 @@
         </div>
     </div>
     <script>
-    function closeLore() {
-        document.getElementById("item1").style.display = "none";
-        
-         window.location.hash = "";
-    }
-    </script>
 
-        <script>
     // Navigation toggle function
     function toggleMenu() {
         const sideNav = document.getElementById('sideNav');
