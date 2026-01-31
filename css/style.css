@@ -397,3 +397,12 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
 }
+
+.scrap {
+    position: absolute;
+    /* Remove 'background: #fff;' so the transparency shows through */
+    padding: 0; /* Adjust padding if you want a border, otherwise set to 0 */
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+    z-index: 5;
+    text-decoration: none;
+}
