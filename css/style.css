@@ -306,6 +306,61 @@ body {
     transform: rotate(-10deg);
 }
 
+/* Container for the paper and overlapping items */
+.diary-collage {
+    position: relative;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.paper-base {
+    width: 100%;
+    display: block;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.7);
+    filter: sepia(0.2) contrast(1.1);
+}
+
+/* Styling the floating polaroids */
+.scrap {
+    position: absolute;
+    background: #fff;
+    padding: 5px 5px 15px 5px; /* Creates the polaroid frame */
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+    z-index: 5;
+    text-decoration: none;
+}
+
+.scrap img {
+    width: 100%;
+    display: block;
+}
+
+/* Precise positioning to match your Figma */
+.photo-top-right {
+    top: -15px;
+    right: -10px;
+    width: 110px;
+    transform: rotate(12deg);
+}
+
+.photo-bottom-left {
+    bottom: 30px;
+    left: -15px;
+    width: 120px;
+    transform: rotate(-10deg);
+}
+
+.lore-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+}
+
 /* =========================================
    8. MODALS & OVERLAYS
    ========================================= */
