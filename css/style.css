@@ -342,29 +342,39 @@ body {
     font-size: 36px;
 }
 
-/* --- Section Spacing (The Figma Look) --- */
+/* Make your existing hero section better */
 .hero-immersive {
-    background-size: cover;
-    background-position: center;
+    height: 90vh;
+    background: 
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+        url('https://www.transparenttextures.com/patterns/dark-matter.png'), 
+        #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
 }
 
-.diary-section {
-    padding-bottom: 100px; /* Space before the next horror segment */
-}
-
-/* Ensure the close area covers the whole screen behind the card */
-.overlay-close-area {
+/* Add a subtle texture overlay */
+.hero-immersive::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: default;
-    z-index: -1; /* Sits behind the lore-card */
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/black-paper.png');
+    opacity: 0.2;
+    pointer-events: none;
 }
 
+/* Improve the button hover */
 .btn-horror:hover {
-    background-color: #b30000;
-    color: #fff;
-    cursor: pointer;
+    background: #b30000;
+    border-color: #b30000;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
 }

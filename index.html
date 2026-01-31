@@ -39,22 +39,20 @@
                 <button class="btn-horror">Buy Now</button>
             </section>
 
-            <section class="wood-section diary-section">
-                <p class="journal-hint">Explore Through Wei Yi's Diary</p>
+            <section class="diary-section">
+                <h2 class="section-subtitle">Explore Through Wei Yin's Diary</h2>
                 
-                <div class="diary-collage">
-                    <img src="img/diary-page-bg.jpg" class="paper-base" alt="Diary Page">
-
-                    <a href="#item1" class="scrap photo-top-right">
-                        <img src="img/photo1.png" alt="Memory 1">
-                    </a>
-                    
-                    <a href="#item2" class="scrap photo-bottom-left">
-                        <img src="img/photo2.png" alt="Memory 2">
-                    </a>
+                <div class="diary-teaser">
+                    <div class="diary-page-teaser">
+                        <p class="diary-text">"November 13th. The scratching continues. I can hear it through the walls..."</p>
+                        <div class="interactive-hint">
+                            <span class="question-mark">?</span>
+                            <p>Click to discover clues</p>
+                        </div>
+                    </div>
                 </div>
-
-                <h2 class="title-horror small-text">CAN YOU SURVIVE?</h2>
+                
+                <h2 class="title-horror small-title">CAN YOU SURVIVE?</h2>
             </section>
 
             <section class="wood-section" style="background: #000;">
@@ -88,10 +86,8 @@
     </div>
     <script>
     function closeLore() {
-        // This force-hides the overlay immediately
         document.getElementById("item1").style.display = "none";
         
-        // This cleans up the URL so it doesn't stay on #item1
         window.location.hash = "";
     }
     </script>
