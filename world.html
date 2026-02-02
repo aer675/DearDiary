@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("sideNav");
+        // Check if the menu is currently wide (open)
+        if (menu.style.width === "250px") {
+            menu.style.width = "0"; // Close it
+        } else {
+            menu.style.width = "250px"; // Open it
+        }
+    }
+    
+    // Optional: Close menu if user clicks outside of it
+    window.onclick = function(event) {
+        var menu = document.getElementById("sideNav");
+        var icon = document.querySelector(".menu-icon");
+        if (event.target != menu && event.target != icon && menu.style.width === "250px") {
+             // Only close if clicking outside the menu, not on links inside
+             if(!event.target.closest('.side-nav')) {
+                menu.style.width = "0";
+             }
+        }
+    }
+</script>
+
 <body>
 
 <!--Header Section-->
@@ -102,3 +126,6 @@
         }
     }
 </script>
+
+<div class="red-string string-1"></div>
+<div class="red-string string-2"></div>

@@ -56,6 +56,8 @@ body {
     min-height: 100vh;
     border-left: 1px solid #222;
     border-right: 1px solid #222;
+    position: relative; 
+    overflow: hidden;       
 }
 
 /* =========================================
@@ -89,7 +91,7 @@ body {
 .side-nav {
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute; 
     z-index: 5000;
     top: 0;
     left: 0;
@@ -542,3 +544,42 @@ body {
     z-index: 100;
 }
 
+.red-string {
+    position: absolute;
+    height: 2px;
+    background: #b30000; /* Blood red from your palette */
+    opacity: 0.6;
+    z-index: 5;
+    transform-origin: left center;
+    pointer-events: none; /* User can click through the string to the images */
+}
+
+/* Connects Wei Yi to the center of the board */
+.string-1 {
+    width: 150px;
+    top: 30%;
+    left: 45%;
+    transform: rotate(45deg);
+}
+
+/* Connects Mom to a lower evidence scrap */
+.string-2 {
+    width: 200px;
+    top: 65%;
+    right: 25%;
+    transform: rotate(-20deg);
+}
+
+.evidence-pin {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Snappy "game" feel */
+}
+
+.evidence-pin:hover {
+    transform: scale(1.1) rotate(0deg) !important; /* Straights the photo and brings it forward */
+    z-index: 100;
+    filter: brightness(1.2);
+}
+
+.evidence-pin:active {
+    transform: scale(0.95); /* Shrinks slightly when clicked */
+}
