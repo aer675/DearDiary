@@ -103,28 +103,31 @@
 
         <script>
 
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = "flex";
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "flex";
+            }
         }
-    }
 
-    // General function to hide any modal by its ID
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = "none";
+        // General function to hide any modal by its ID
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "none";
+            }
         }
-    }
 
-    // Existing Side Nav Logic
-    function toggleMenu() {
-        const sideNav = document.getElementById('sideNav');
-        if (sideNav.style.width === '250px') {
-            sideNav.style.width = '0';
-        } else {
-            sideNav.style.width = '250px';
+        // Existing Side Nav Logic
+        function toggleMenu() {
+            const sideNav = document.getElementById('sideNav');
+            if (sideNav.style.width === '250px') {
+                sideNav.style.width = '0';
+            } else {
+                sideNav.style.width = '250px';
+            }
         }
-    }
-</script>
+    </script>
+        </main>
+    </div> </body>
+</html>
