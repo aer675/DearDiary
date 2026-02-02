@@ -1,25 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dear Diary</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
 <div class="mobile-container">
     <nav class="navbar">
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <a href="login.html" class="auth-link">Login / Signup</a>
     </nav>
 
-    <section class="file-folder">
-        <h2 class="title-horror">SUBJECT FILES</h2>
-        
-        <div class="character-file" onclick="openLore('wei-yi')">
-            <div class="photo-placeholder">[PNG CUTOUT]</div>
-            <div class="file-details">
-                <p><strong>NAME:</strong> Wei Yi</p>
-                <p><strong>STATUS:</strong> Missing</p>
+    <section class="investigation-board">
+        <div class="board-header">
+            <h2 class="title-horror">CASE FILE: #0913</h2>
+            <p class="journal-hint">Status: Investigation Ongoing</p>
+        </div>
+
+        <div class="board-canvas">
+            <div class="string s1"></div>
+            <div class="string s2"></div>
+
+            <div class="evidence photo-wei" onclick="openLore('wei-yi')">
+                <div class="pin"></div>
+                <img src="images/interface/polaroid.png" alt="Subject: Wei Yi">
+                <p class="label">GU WEI YI</p>
+            </div>
+
+            <div class="evidence scribble-clue" onclick="openLore('scribble')">
+                <img src="images/interface/scribbles.png" alt="Note Found">
+                <p class="label-tape">FOUND AT SCENE</p>
+            </div>
+
+            <div class="evidence report-card">
+                <div class="pin"></div>
+                <h3>POLICE LOG</h3>
+                <p>Last seen: Third Hour School. <br> Time: 11:44 PM. <br> <span class="missing">MISSING</span></p>
             </div>
         </div>
     </section>
