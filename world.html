@@ -5,32 +5,34 @@
     </nav>
 
     <section class="investigation-board">
-        <div class="board-header">
-            <h2 class="title-horror">CASE FILE: #0913</h2>
-            <p class="journal-hint">Status: Investigation Ongoing</p>
+        
+        <div class="evidence-pin pin-wei" onclick="openModal('wei-yi-modal')">
+            <div class="red-pin"></div>
+            <img src="images/interface/newimage1.png" alt="Wei Yi">
         </div>
 
-        <div class="board-canvas">
-            <div class="string s1"></div>
-            <div class="string s2"></div>
-
-            <div class="evidence photo-wei" onclick="openLore('wei-yi')">
-                <div class="pin"></div>
-                <img src="images/interface/newimage1.png" alt="Subject: Wei Yi">
-                <p class="label">GU WEI YI</p>
-            </div>
-
-            <div class="evidence photo-mom" onclick="openLore('mom')">
-                <div class="pin"></div>
-                <img src="images/interface/newimage2.png" alt="Subject: Mrs Gu">
-                <p class="label">MRS GU</p>
-            </div>
-
-            <div class="evidence report-card">
-                <div class="pin"></div>
-                <h3>POLICE LOG</h3>
-                <p>Location: Third Hour School. <br> Status: <span class="missing">MISSING</span></p>
-            </div>
+        <div class="evidence-pin pin-mom" onclick="openModal('mom-modal')">
+            <div class="red-pin"></div>
+            <img src="images/interface/newimage2.png" alt="Mrs Gu">
         </div>
+
     </section>
+</div>
+
+<div id="wei-yi-modal" class="lore-overlay">
+    <div class="lore-card char-popup">
+        <span class="close-btn" onclick="closeModal('wei-yi-modal')">&times;</span>
+        <img src="images/interface/newimage1.png" class="polaroid-frame">
+        <h3 class="journal-text">Gu Wei Yi (顾唯一)</h3>
+        <p class="lore-thought">A Singaporean girl with her diary. Tries her best to fit in.</p>
+    </div>
+</div>
+
+<div id="mom-modal" class="lore-overlay">
+    <div class="lore-card char-popup">
+        <span class="close-btn" onclick="closeModal('mom-modal')">&times;</span>
+        <img src="images/interface/newimage2.png" class="polaroid-frame">
+        <h3 class="journal-text">Mrs Gu Mei Qi (顾美琪)</h3>
+        <p class="lore-thought">Wei Yi's mother. Known for being strict.</p>
+    </div>
 </div>
