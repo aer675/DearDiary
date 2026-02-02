@@ -74,3 +74,31 @@
                 <p class="lore-thought">Wei Yi's mother. Known for being strict.</p>
             </div>
         </div>
+
+        <script>
+
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = "flex";
+        }
+    }
+
+    // General function to hide any modal by its ID
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Existing Side Nav Logic
+    function toggleMenu() {
+        const sideNav = document.getElementById('sideNav');
+        if (sideNav.style.width === '250px') {
+            sideNav.style.width = '0';
+        } else {
+            sideNav.style.width = '250px';
+        }
+    }
+</script>
