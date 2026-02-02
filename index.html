@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+<!--Nav Bar JS function-->
 <script>
     function toggleMenu() {
         var menu = document.getElementById("sideNav");
-        // Check if the menu is currently wide (open)
         if (menu.style.width === "250px") {
             menu.style.width = "0"; // Close it
         } else {
@@ -18,12 +18,10 @@
         }
     }
     
-    // Optional: Close menu if user clicks outside of it
     window.onclick = function(event) {
         var menu = document.getElementById("sideNav");
         var icon = document.querySelector(".menu-icon");
         if (event.target != menu && event.target != icon && menu.style.width === "250px") {
-             // Only close if clicking outside the menu, not on links inside
              if(!event.target.closest('.side-nav')) {
                 menu.style.width = "0";
              }
@@ -111,22 +109,15 @@
             <button class="btn-horror" onclick="closeLore()" style="font-size: 0.8rem;">CLOSE</button>
         </div>
     </div>
+
     <script>
-
-    // Navigation toggle function
-    function toggleMenu() {
-        const sideNav = document.getElementById('sideNav');
-        if (sideNav.style.width === '250px' || sideNav.style.width === '') {
-            sideNav.style.width = '0';
-        } else {
-            sideNav.style.width = '250px';
+        function openLore() {
+            document.getElementById("item1").style.display = "block";
         }
-    }
 
-    function closeLore() {
-        document.getElementById("item1").style.display = "none";
-        window.location.hash = "";
-    }
+        function closeLore() {
+            document.getElementById("item1").style.display = "none";
+        }
     </script>
 
 </body>

@@ -6,6 +6,47 @@
     <title>Dear Diary</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
+<!--Nav Bar JS function-->
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("sideNav");
+        if (menu.style.width === "250px") {
+            menu.style.width = "0"; // Close it
+        } else {
+            menu.style.width = "250px"; // Open it
+        }
+    }
+    
+    window.onclick = function(event) {
+        var menu = document.getElementById("sideNav");
+        var icon = document.querySelector(".menu-icon");
+        if (event.target != menu && event.target != icon && menu.style.width === "250px") {
+             if(!event.target.closest('.side-nav')) {
+                menu.style.width = "0";
+             }
+        }
+    }
+</script>
+
+<!--Header Section-->
+    <div class="vignette"></div>
+    <div class="mobile-container">
+    <header>
+        <nav class="navbar">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <a href="login.html" class="auth-link">Login / Signup</a>
+        </nav>
+
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="world.html">World</a>
+            <a href="merch.html">Merch</a>
+            <a href="hub.html">Community Hub</a>
+        </div>
+    </header>
+    
 <section class="merch-grid">
     <h2 class="title-horror">Under Construction</h2>
     </div>
