@@ -7,28 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<!--Nav Bar JS function-->
-<script>
-    function toggleMenu() {
-        var menu = document.getElementById("sideNav");
-        if (menu.style.width === "250px") {
-            menu.style.width = "0"; // Close it
-        } else {
-            menu.style.width = "250px"; // Open it
-        }
-    }
-    
-    window.onclick = function(event) {
-        var menu = document.getElementById("sideNav");
-        var icon = document.querySelector(".menu-icon");
-        if (event.target != menu && event.target != icon && menu.style.width === "250px") {
-             if(!event.target.closest('.side-nav')) {
-                menu.style.width = "0";
-             }
-        }
-    }
-</script>
-
+<script src="js/script.js"></script>
 
 <!--Header Section-->
     <div class="vignette"></div>
@@ -55,7 +34,7 @@
         <form>
             <input type="email" placeholder="Email..." class="horror-input">
             <input type="password" placeholder="Password..." class="horror-input">
-            <button type="submit" class="btn-primary">ENTER THE DIARY</button>
+            <button type="submit" class="btn-horror">ENTER THE DIARY</button>
         </form>
         <p class="small-hint">Returning writer? <a href="login.html">Login here</a></p>
     </div>
