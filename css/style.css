@@ -618,3 +618,127 @@ body {
     border: 2px solid #000;
     padding: 2px 10px;
 }
+
+/* =========================================
+   DESKTOP RESPONSIVE MODE (Min-Width: 1024px)
+   ========================================= */
+@media screen and (min-width: 1024px) {
+
+    /* 1. Unlock the Mobile Container Width */
+    .mobile-container {
+        max-width: 1200px; /* Expands to fit laptop screens */
+        border-left: none;
+        border-right: none;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Adds a nice glow */
+    }
+
+    /* 2. Transform the Sandwich Menu into a Top Bar */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        background: rgba(0,0,0,0.9);
+    }
+
+    .navbar {
+        width: auto;
+        padding: 0;
+        background: transparent;
+    }
+
+    .menu-icon {
+        display: none; /* Hide the sandwich icon on desktop */
+    }
+
+    .side-nav {
+        height: auto;
+        width: auto !important; /* Force overrides the JS width */
+        position: static; /* Removes it from 'absolute' floating */
+        background-color: transparent;
+        padding-top: 0;
+        display: flex; /* Line up links horizontally */
+        gap: 20px;
+        overflow: visible;
+    }
+
+    .side-nav a {
+        font-size: 1.1rem;
+        padding: 10px 15px;
+        display: inline-block;
+        color: #888;
+    }
+
+    .side-nav .closebtn {
+        display: none; /* Hide the 'X' button */
+    }
+
+    /* 3. Fix the Hero Section sizing */
+    .hero-immersive {
+        height: 80vh;
+    }
+
+    .title-horror {
+        font-size: 8rem; /* Make title massive on desktop */
+    }
+
+    /* 4. Fix the Community Hub (Grid Layout) */
+    .pinterest-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+        gap: 30px;
+        padding: 40px;
+    }
+
+    .hub-card {
+        width: 100%; /* Fill the grid cell */
+    }
+
+    /* 5. Fix the World Board Aspect Ratio */
+    /* This prevents the pins from drifting when the screen stretches */
+    .investigation-board {
+        height: 90vh;
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid #333;
+        /* Keep the background aspect ratio consistent */
+        background-size: cover; 
+    }
+
+    /* 6. Fix Merch/Construction/Profile Centering */
+    .construction-zone {
+        height: 70vh;
+    }
+}
+
+/* Update in style.css */
+
+.diary-section {
+    padding: 60px 20px; /* Reduced vertical padding slightly */
+    background: #050505;
+    text-align: center;
+    overflow: hidden; /* Prevents horizontal scrolling if scraps stick out */
+}
+
+.diary-collage {
+    position: relative;
+    width: 95%; /* Increased from 85% to fill more space */
+    max-width: 420px; /* Slightly wider max-width */
+    margin: 20px auto;
+    min-height: 500px;
+}
+
+.paper-base {
+    width: 100%; /* Keeps the paper inside the container boundaries */
+    margin-left: 0;
+    display: block;
+    box-shadow: 8px 8px 25px rgba(0,0,0,0.7); /* Stronger shadow for depth */
+}
+
+.small-title {
+    font-size: 1.5rem; /* Reduced from 2.5rem */
+    margin-top: 10px;
+    letter-spacing: 4px; /* Widens the text to keep it creepy */
+    color: #8b0000; /* Darker blood red */
+    opacity: 0.9;
+}
