@@ -784,3 +784,136 @@ body {
     background-color: #8b0000; /* Darker red */
     color: #e0e0e0;
 }
+
+/* =========================================
+   NEW: CLUB INVITE & FOOTER STYLES
+   ========================================= */
+
+/* 1. The Join Club Section */
+.club-invite-section {
+    position: relative;
+    background-color: #0d0d0d; /* Dark black/grey */
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.club-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Typography matching your image */
+.join-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.club-title {
+    font-family: 'Just Me Again Down Here', cursive; /* Using the handwritten font */
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.club-description {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.4rem;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.mystery-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+/* The Button */
+.btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #8b0000; /* Red Border */
+    padding: 10px 60px;
+    border-radius: 50px;
+    font-family: 'Special Elite', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+    background: #8b0000;
+    color: white;
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+}
+
+/* Floating Polaroids */
+.decor-polaroid {
+    position: absolute;
+    opacity: 0.3; /* Faded like the image */
+    pointer-events: none;
+}
+
+.decor-polaroid img {
+    width: 150px;
+    border: 5px solid #fff;
+}
+
+.top-right-polaroid {
+    top: -20px;
+    right: -20px;
+    transform: rotate(15deg);
+}
+
+/* 2. The Global Footer (Copyright & Icons) */
+.global-footer {
+    background-color: #050505; /* Darker than the section above */
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.footer-logo {
+    font-family: 'Permanent Marker', cursive;
+    color: #b30000; /* Red Logo */
+    font-size: 1.2rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.copyright-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    color: #b30000;
+}
