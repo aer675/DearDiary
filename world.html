@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dear Diary</title>
+    <title>Dear Diary - World</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<script src="js/script.js"></script>
 
 <body>
 
@@ -27,105 +26,88 @@
             <a href="merch.html">Merch</a>
             <a href="hub.html">Community Hub</a>
             <a href="profile.html">My Profile</a>
-
         </div>
     </header>
 
-
 <!--Main Content Section-->
-        <main>
-            <section class="hero-immersive" style="background: 
-            linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-                url('images/background/world.jpg') center/cover no-repeat;">
+    <main>
+        <section class="hero-immersive" style="height: 50vh; min-height: 400px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background/world.jpg') center/cover no-repeat;">
+            <h1 class="title-horror">THE<br>WORLD</h1>
+            <p style="font-size: 0.7rem; letter-spacing: 3px;">DEVELOPED BY THIRD HOUR CO.</p>
+        </section>
 
-                <h1 class="title-horror">THE<br>WORLD</h1>
-                <p style="font-size: 0.7rem; letter-spacing: 3px;">DEVELOPED BY THIRD HOUR CO.</p>
-            </section>
+        <section class="world-intro">
+            <h2 class="section-subtitle">Dive Into The Investigation Board</h2>
+            <p class="world-text">Explore the key characters and evidence that shape Wei Yi's journey.</p>
+        </section>
 
-            <section class="world-intro">
-                <h2 class="section-subtitle">Dive Into The Investigation Board</h2>
-                <p class="world-text">Explore the key characters and evidence that shape Wei Yi's journey. Click on each pin to uncover their stories and significance in the unfolding mystery.</p>
-            </section>
-            <section class="investigation-board">
-    
-                <div class="evidence-pin pin-wei" onclick="openModal('wei-yi-modal')">
-                    <div class="red-pin"></div>
-                    <img src="images/interface/newimage1.png" alt="Wei Yi">
-                </div>
+        <div class="board-scroll-container">
+            <img src="images/background/board_base.jpg" class="board-img-bg" alt="Investigation Board">
 
-                <div class="evidence-pin pin-mom" onclick="openModal('mom-modal')">
-                    <div class="red-pin"></div>
-                    <img src="images/interface/newimage2.png" alt="Mrs Gu">
-                </div>
+            <div class="evidence-pin" style="top: 15%; left: 35%;" onclick="openModal('wei-yi-modal')">
+                <div class="red-pin"></div>
+            </div>
 
-                <div class="red-string string-1"></div>
-                <div class="red-string string-2"></div>
-
-            </section>
+            <div class="evidence-pin" style="top: 45%; left: 60%;" onclick="openModal('mom-modal')">
+                <div class="red-pin"></div>
+            </div>
         </div>
 
         <div id="wei-yi-modal" class="lore-overlay">
-            <div class="lore-card char-popup">
-                <span class="close-btn" onclick="closeModal('wei-yi-modal')">&times;</span>
-                <img src="images/interface/newimage1.png" class="polaroid-frame">
-                <h3 class="journal-text">Gu Wei Yi (顾唯一)</h3>
-                <p class="lore-thought">A Singaporean girl with her diary. Tries her best to fit in.</p>
+            <div class="polaroid-popup">
+                <span class="close-x" onclick="closeModal('wei-yi-modal')">&times;</span>
+                <div class="polaroid-inner">
+                    <img src="images/interface/newimage1.png" alt="Wei Yi">
+                </div>
+                <h3 class="handwritten-name">Gu Wei Yi (顾唯一)</h3>
+                <p class="handwritten-desc">A Singaporean girl with her diary. Tries her best to fit in.</p>
             </div>
         </div>
 
         <div id="mom-modal" class="lore-overlay">
-            <div class="lore-card char-popup">
-                <span class="close-btn" onclick="closeModal('mom-modal')">&times;</span>
-                <img src="images/interface/newimage2.png" class="polaroid-frame">
-                <h3 class="journal-text">Mrs Gu Mei Qi (顾美琪)</h3>
-                <p class="lore-thought">Wei Yi's mother. Known for being strict.</p>
+            <div class="polaroid-popup">
+                <span class="close-x" onclick="closeModal('mom-modal')">&times;</span>
+                <div class="polaroid-inner">
+                    <img src="images/interface/newimage2.png" alt="Mrs Gu">
+                </div>
+                <h3 class="handwritten-name">Mrs Gu Mei Qi (顾美琪)</h3>
+                <p class="handwritten-desc">Wei Yi's mother. Known for being strict.</p>
             </div>
         </div>
 
-        <!--Footer Section-->
         <footer class="global-footer">
             <div class="footer-logo">DEAR<br>DIARY</div>
             <p class="copyright-text">Third Hour Co. All rights reserved.</p>
-            
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-discord"></i></a>
                 <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#"><i class="fa-brands fa-google"></i></a>
-                <a href="#"><i class="fa-brands fa-steam"></i></a>
             </div>
         </footer>
+    </main>
+    </div>
 
-        <script>
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "flex";
-            }
+    <script src="js/script.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-
-        // General function to hide any modal by its ID
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "none";
-            }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-
-        // Existing Side Nav Logic
-        function toggleMenu() {
-            const sideNav = document.getElementById('sideNav');
-            if (sideNav.style.width === '250px') {
-                sideNav.style.width = '0';
-            } else {
-                sideNav.style.width = '250px';
-            }
-        }
+        
+        // Close modal when clicking outside the popup
+        document.querySelectorAll('.lore-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
     </script>
-        </main>
-    </div> </body>
+</body>
 </html>
