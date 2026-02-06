@@ -774,6 +774,18 @@ body {
         font-size: 8rem; /* Make title massive on desktop */
     }
 
+        .side-nav {
+        align-items: center; /* This forces all links to align vertically in the center */
+    }
+
+    .side-nav a {
+        /* Existing styles... */
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 40px; /* Force a height */
+        line-height: 40px; /* Center text vertically */
+    }
+
     /* 4. Fix the Community Hub (Grid Layout) */
     .pinterest-grid {
         display: grid;
@@ -1686,6 +1698,26 @@ body {
     margin-bottom: 30px;
 }
 
+.auth-link {
+    border: 1px solid #444;
+    padding: 8px 20px;       /* Increased padding slightly */
+    border-radius: 20px;
+    font-size: 0.8rem;       /* Slightly larger */
+    text-decoration: none;
+    color: #ccc;
+    
+    font-family: 'Special Elite', serif; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+    background: #b30000;
+    color: #fff;
+    border-color: #b30000;
+}
+
 .horror-input {
     width: 100%;
     padding: 15px;
@@ -1777,14 +1809,73 @@ body {
 /* Centers the apple */
 .hero-apple {
     display: block;
-    width: 120px;
-    margin: 0 auto -10px auto; /* Centers it and pulls it down slightly */
+    width: 180px;            /* Increased from 120px/140px */
+    max-width: 40%;
+    margin: 0 auto -25px auto; /* Negative bottom margin pulls the title UP */
     animation: floatApple 4s ease-in-out infinite;
     z-index: 10;
     position: relative;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
 }
 
 @keyframes floatApple {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+/* Update the Main Title */
+.title-horror {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.8rem;       /* Slightly larger balance */
+    color: #b30000;
+    line-height: 0.9;
+    
+    /* TIGHTER SPACING */
+    margin: 5px 0 25px 0;    /* Reduced top margin to pull it to the apple */
+    
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 6;
+
+    /* HARD BLACK OUTLINE to fix "Vibration" */
+    text-shadow: 
+        3px 3px 0 #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0 0 30px rgba(179, 0, 0, 0.4); /* Subtle glow behind the black */
+    
+    animation: breathe 4s ease-in-out infinite; 
+}
+
+/* Update the Breathing Animation to match the new shadow */
+@keyframes breathe {
+    0% { 
+        transform: scale(1); 
+        text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 30px rgba(179, 0, 0, 0.4);
+    }
+    50% { 
+        transform: scale(1.02); 
+        text-shadow: 4px 4px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 50px rgba(179, 0, 0, 0.8); /* Glows brighter */
+    } 
+    100% { 
+        transform: scale(1); 
+        text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 30px rgba(179, 0, 0, 0.4);
+    }
+}
+
+
+.scrap.raw-scribble {
+    background: transparent !important; /* Forces transparency */
+    padding: 0 !important;              /* Removes the polaroid spacing */
+    box-shadow: none !important;        /* Removes the blocky shadow */
+    border: none !important;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6)); /* Adds a natural shadow to the ink ink instead */
+}
+
+/* Optional: Make the scribble wiggle slightly for horror effect */
+.scrap.raw-scribble:hover {
+    transform: scale(1.1) rotate(-5deg) !important;
+    box-shadow: none !important; /* Ensures no white box appears on hover */
 }
