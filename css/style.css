@@ -180,6 +180,64 @@ body {
     text-transform: uppercase;
 }
 
+/* --- New Hero Elements --- */
+
+/* 1. Positioning the Logos */
+.hero-logos {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 120px; /* Adjust size as needed */
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+    z-index: 10;
+}
+
+/* 2. Styling the Apple */
+.hero-apple {
+    width: 140px; /* Adjust size as needed */
+    max-width: 30%;
+    margin-bottom: -15px; /* Pulls it closer to the text */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+    animation: floatApple 4s ease-in-out infinite;
+    z-index: 5;
+}
+
+@keyframes floatApple {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 3. Fixing the Text Visibility */
+.developer-text {
+    font-family: 'Special Elite', serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #e0e0e0; /* Changed from #888 to Light Grey/White */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); /* Adds shadow for readability */
+    font-weight: bold;
+}
+
+/* 4. Reducing the Title Size (Mobile Default) */
+.title-horror {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;  /* REDUCED from 5rem */
+    color: #b30000;
+    line-height: 0.85;
+    margin: 10px 0 15px 0;
+    text-shadow: 
+        4px 4px 0 rgba(0,0,0,0.9),
+        0 0 30px rgba(179, 0, 0, 0.6);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 6;
+}
+
+/* =========================================
+   5. BUTTON STYLES
+   ========================================= */
 .btn-horror {
     background: transparent;
     color: #fff;
@@ -1682,4 +1740,51 @@ body {
     background: #b30000;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(179, 0, 0, 0.3);
+}
+
+/* =========================================
+   FIXES FOR VISIBILITY & LAYOUT
+   ========================================= */
+
+/* Makes the "Developed By" text white so it's visible on dark backgrounds */
+.developer-text {
+    font-family: 'Special Elite', serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #e0e0e0 !important; /* Forces it to be light grey/white */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); /* Adds shadow for readability */
+    font-weight: bold;
+    position: relative; 
+    z-index: 10;
+}
+
+/* Reduces the big title size */
+.title-horror {
+    font-size: 3.5rem; /* Reduced from 5rem */
+}
+
+/* Positions the logos in the top right */
+.hero-logos {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 100px;
+    z-index: 20;
+}
+
+/* Centers the apple */
+.hero-apple {
+    display: block;
+    width: 120px;
+    margin: 0 auto -10px auto; /* Centers it and pulls it down slightly */
+    animation: floatApple 4s ease-in-out infinite;
+    z-index: 10;
+    position: relative;
+}
+
+@keyframes floatApple {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
