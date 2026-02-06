@@ -679,29 +679,33 @@ body {
     }
 
     .side-nav {
-        height: 100%;
-        width: 0;
-        position: fixed;  /* CHANGE from absolute */
-        z-index: 5000;
-        top: 0;
-        left: 0;
-        background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 100%);  /* Gradient */
-        overflow-x: hidden;
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother */
-        padding-top: 60px;
-        box-shadow: 5px 0 30px rgba(0,0,0,0.8);  /* ADD shadow */
-    }
+            height: auto;         /* Reset height */
+            width: auto;          /* Let it take natural width */
+            position: static;     /* Put it back in the normal flow */
+            background: transparent; /* Remove the drawer background */
+            padding: 0;           /* Remove top padding */
+            box-shadow: none;     /* Remove shadow */
+            display: flex;        /* Align links horizontally */
+            gap: 20px;            /* Space between links */
+            overflow: visible;    /* Allow content to be seen */
+        }
 
-    .side-nav a {
-        font-size: 1.1rem;
-        padding: 10px 15px;
-        display: inline-block;
-        color: #888;
-    }
+        .side-nav a {
+            font-size: 1rem;
+            padding: 10px 15px;
+            display: inline-block;
+            color: #ccc;          /* Light grey text */
+            transition: color 0.3s ease;
+        }
+        
+        .side-nav a:hover {
+            color: #b30000;       /* Red hover effect */
+            background: transparent;
+        }
 
-    .side-nav .closebtn {
-        display: none; /* Hide the 'X' button */
-    }
+        .side-nav .closebtn {
+            display: none;        /* Hide the 'X' button */
+        }
 
     /* 3. Fix the Hero Section sizing */
     .hero-immersive {
