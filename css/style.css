@@ -34,7 +34,7 @@
 body {
     background: 
         radial-gradient(circle at center, #1a1a1a 0%, #000 100%),
-        url('../images/background/wood-texture.jpg'); /* Optional: Add a subtle texture */
+        url('../images/background/wood-texture.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -55,13 +55,13 @@ body {
 
 .mobile-container {
     width: 100%;
-    max-width: 450px; 
+    max-width: 450px;
     min-height: 100vh;
     background-color: #0d0d0d;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(179, 0, 0, 0.2); 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(179, 0, 0, 0.2);
     position: relative;
     overflow-x: hidden;
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
 /* =========================================
@@ -72,9 +72,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: rgba(13, 13, 13, 0.7); /* Lower opacity */
-    backdrop-filter: blur(10px); /* Blurs content behind it */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    background: rgba(13, 13, 13, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: sticky;
     top: 0;
@@ -88,17 +88,27 @@ body {
 
 .auth-link {
     border: 1px solid #444;
-    padding: 5px 15px;
+    padding: 8px 20px;
     border-radius: 20px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     text-decoration: none;
     color: #ccc;
+    font-family: 'Special Elite', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+    background: #b30000;
+    color: #fff;
+    border-color: #b30000;
 }
 
 .side-nav {
     height: 100%;
     width: 0;
-    position: absolute; 
+    position: absolute;
     z-index: 5000;
     top: 0;
     left: 0;
@@ -115,10 +125,11 @@ body {
     color: #818181;
     display: block;
     font-family: 'Permanent Marker', cursive;
+    transition: color 0.3s ease;
 }
 
-.side-nav a:hover { 
-    color: #b30000; 
+.side-nav a:hover {
+    color: #b30000;
 }
 
 .side-nav .closebtn {
@@ -129,78 +140,40 @@ body {
 }
 
 /* =========================================
-   4. HERO SECTION (CLEAN VERSION)
+   4. HERO SECTION
    ========================================= */
 .hero-immersive {
     height: 90vh;
-    min-height: 600px;  /* ADD THIS */
+    min-height: 600px;
     background: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px;  /* CHANGE from 20px */
+    padding: 40px 20px;
     position: relative;
-    overflow: hidden;  /* ADD THIS */
+    overflow: hidden;
 }
 
-/* Remove the before pseudo-element (texture overlay) */
-.hero-immersive::before {
-    display: none;
-}
-
-.title-horror {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 5rem;  /* Increased from 4.5rem */
-    color: #b30000;
-    line-height: 0.85;
-    margin: 20px 0 15px 0;
-    text-shadow: 
-        4px 4px 0 rgba(0,0,0,0.9),
-        0 0 30px rgba(179, 0, 0, 0.6),
-        0 0 60px rgba(179, 0, 0, 0.3);
-    letter-spacing: 2px;
-    transition: all 0.3s ease;  /* ADD THIS */
-}
-
-.title-horror:hover {
-    text-shadow: 
-        4px 4px 0 rgba(0,0,0,0.9),
-        0 0 40px rgba(179, 0, 0, 0.9),
-        0 0 80px rgba(179, 0, 0, 0.5);
-}
-
-.developer-text {
-    font-family: 'Special Elite', serif;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: #888;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-
-/* --- New Hero Elements --- */
-
-/* 1. Positioning the Logos */
 .hero-logos {
     position: absolute;
     top: 25px;
     right: 25px;
-    width: 120px; /* Adjust size as needed */
+    width: 100px;
     opacity: 0.9;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-    z-index: 10;
+    z-index: 20;
 }
 
-/* 2. Styling the Apple */
 .hero-apple {
-    width: 140px; /* Adjust size as needed */
-    max-width: 30%;
-    margin-bottom: -15px; /* Pulls it closer to the text */
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+    width: 180px;
+    max-width: 40%;
+    margin: 0 auto -25px auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
     animation: floatApple 4s ease-in-out infinite;
-    z-index: 5;
+    z-index: 10;
+    position: relative;
 }
 
 @keyframes floatApple {
@@ -208,50 +181,97 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* 3. Fixing the Text Visibility */
+/* Breathing title animation */
+@keyframes breathe {
+    0% { 
+        transform: scale(1); 
+        text-shadow: 
+            3px 3px 0 #000,
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000,
+            0 0 30px rgba(179, 0, 0, 0.4);
+    }
+    50% { 
+        transform: scale(1.02); 
+        text-shadow: 
+            4px 4px 0 #000,
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000,
+            0 0 50px rgba(179, 0, 0, 0.8);
+    }
+    100% { 
+        transform: scale(1); 
+        text-shadow: 
+            3px 3px 0 #000,
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000,
+            0 0 30px rgba(179, 0, 0, 0.4);
+    }
+}
+
+.title-horror {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.8rem;
+    color: #b30000;
+    line-height: 0.9;
+    margin: 5px 0 25px 0;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 6;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+.small-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    letter-spacing: 4px;
+    color: #8b0000;
+    opacity: 0.9;
+}
+
 .developer-text {
     font-family: 'Special Elite', serif;
     font-size: 0.8rem;
     letter-spacing: 3px;
-    color: #e0e0e0; /* Changed from #888 to Light Grey/White */
+    color: #e0e0e0 !important;
     margin-bottom: 30px;
     text-transform: uppercase;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); /* Adds shadow for readability */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
     font-weight: bold;
-}
-
-/* 4. Reducing the Title Size (Mobile Default) */
-.title-horror {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 3.5rem;  /* REDUCED from 5rem */
-    color: #b30000;
-    line-height: 0.85;
-    margin: 10px 0 15px 0;
-    text-shadow: 
-        4px 4px 0 rgba(0,0,0,0.9),
-        0 0 30px rgba(179, 0, 0, 0.6);
-    letter-spacing: 2px;
     position: relative;
-    z-index: 6;
+    z-index: 10;
 }
 
 /* =========================================
    5. BUTTON STYLES
    ========================================= */
-.btn-horror {
+.btn-horror, .btn-primary {
     background: transparent;
     color: #fff;
-    border: 2px solid #444;  /* Increased from 1px */
-    padding: 14px 45px;  /* Increased padding */
+    border: 2px solid #444;
+    padding: 14px 45px;
     border-radius: 30px;
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Special Elite', serif;
     position: relative;
     overflow: hidden;
+    width: auto;
+}
+
+.btn-primary {
+    width: 100%;
+    border-color: #b30000;
+    margin-top: 10px;
 }
 
 .btn-horror::before {
@@ -273,55 +293,45 @@ body {
     height: 300%;
 }
 
-.btn-horror:hover {
+.btn-horror:hover, .btn-primary:hover {
     border-color: #b30000;
     color: #fff;
     transform: translateY(-3px);
-    box-shadow: 
-        0 10px 30px rgba(179, 0, 0, 0.4),
-        0 5px 15px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 30px rgba(179, 0, 0, 0.4), 0 5px 15px rgba(0,0,0,0.6);
+    background: #b30000;
 }
 
-.btn-horror:active {
+.btn-horror:active, .btn-primary:active {
     transform: translateY(-1px);
 }
 
-.btn-horror {
+.btn-ghost {
+    display: inline-block;
     background: transparent;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 12px 40px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    color: #ccc;
+    border: 1px solid #8b0000;
+    padding: 10px 60px;
+    border-radius: 50px;
     font-family: 'Special Elite', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.btn-horror:hover {
-    background: #b30000;
-    border-color: #b30000;
-    transform: translateY(-2px);
+.btn-ghost:hover {
+    background: #8b0000;
+    color: white;
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
 }
 
 /* =========================================
-   6. DIARY & CONTENT SECTIONS
+   6. CONTENT SECTIONS
    ========================================= */
-.wood-section {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://www.transparenttextures.com/patterns/wood-pattern.png');
-    padding: 60px 20px;
-    text-align: center;
-}
-
 .diary-section {
     padding: 60px 20px;
-    background: 
-        linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-        url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    background: #050505;
     text-align: center;
+    overflow: hidden;
 }
 
 .section-subtitle {
@@ -332,60 +342,26 @@ body {
     letter-spacing: 2px;
 }
 
-.diary-teaser {
-    max-width: 400px;
-    margin: 0 auto 40px;
-}
-
-.diary-page-teaser {
-    background: #e0d6c3;
-    padding: 30px;
-    border-radius: 5px;
-    transform: rotate(-1deg);
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+.diary-collage {
     position: relative;
-    border: 1px solid #8b7355;
+    width: 95%;
+    max-width: 420px;
+    margin: 20px auto;
+    min-height: 500px;
 }
 
-.diary-text {
-    color: #3a3429;
-    font-family: 'Special Elite', serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+.paper-base {
+    width: 100%;
+    display: block;
+    box-shadow: 8px 8px 25px rgba(0,0,0,0.7);
 }
 
-.interactive-hint {
-    margin-top: 20px;
-    padding: 10px;
-    border-top: 1px dashed #999;
+.wood-section {
+    background: #000;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.question-mark {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: #b30000;
-    color: white;
-    border-radius: 50%;
-    line-height: 30px;
-    margin-right: 10px;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.small-title {
-    font-size: 2.5rem;
-    margin-top: 20px;
-}
-
-/* =========================================
-   7. IMAGE & MEDIA COMPONENTS
-   ========================================= */
 .cutout-frame {
     width: 80%;
     margin: 20px auto;
@@ -399,95 +375,15 @@ body {
     transform: rotate(3deg);
 }
 
-.diary-collage {
-    position: relative;
-    width: 90%;
-    margin: 30px auto;
-}
-
-.paper-base {
-    width: 100%;
-    display: block;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.7);
-}
-
-.scrap {
-    position: absolute;
-    background: #fff;
-    padding: 5px 5px 15px 5px;
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
-    z-index: 5;
-}
-
-.photo-top-right {
-    top: -15px;
-    right: -10px;
-    width: 110px;
-    transform: rotate(12deg);
-}
-
-.photo-bottom-left {
-    bottom: 30px;
-    left: -15px;
-    width: 120px;
-    transform: rotate(-10deg);
-}
-
-.lore-hint {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    color: rgba(255,255,255,0.4);
-    pointer-events: none;
-}
-
 /* =========================================
-   8. MODALS & OVERLAYS
+   7. INTERACTIVE ELEMENTS
    ========================================= */
-.lore-overlay {
-    display: none;
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 5000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(8px);
-}
-
-.lore-card {
-    background: #111;
-    border: 1px solid #333;
-    padding: 30px;
-    width: 85%;
-    max-width: 350px;
-    box-shadow: 0 0 50px rgba(0,0,0,1);
-    text-align: center;
-}
-
-.btn-putback {
-    background: transparent;
-    border: 1px solid #444;
-    color: #888;
-    padding: 8px 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-}
-
 .scrap {
     position: absolute;
     background: #fff;
     padding: 8px 8px 25px 8px;
-    box-shadow: 
-        0 8px 25px rgba(0,0,0,0.7),
-        0 0 0 1px rgba(0,0,0,0.1);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);  /* Bouncy */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 5;
     text-decoration: none;
     cursor: pointer;
@@ -513,996 +409,69 @@ body {
     filter: sepia(0) brightness(1.1);
 }
 
-/* --- Investigation Board Base --- */
-.investigation-board {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url('../images/background/board_base.jpg') no-repeat center center;
-    background-size: cover;
+.scrap.raw-scribble {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
 }
 
-.evidence-pin {
+.scrap.raw-scribble:hover {
+    transform: scale(1.1) rotate(-5deg) !important;
+    box-shadow: none !important;
+}
+
+.photo-top-right {
+    top: -15px;
+    right: -10px;
+    width: 110px;
+    animation: float1 6s ease-in-out infinite;
+}
+
+.photo-bottom-left {
+    bottom: 30px;
+    left: -15px;
+    width: 120px;
+    animation: float2 7s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: rotate(12deg) translateY(0); }
+    50% { transform: rotate(14deg) translateY(-10px); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(-10deg) translateY(-8px); }
+}
+
+.lore-hint {
     position: absolute;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-origin: center center;
-    transform: translate(-50%, -50%); 
-}
-
-.evidence-pin:hover {
-    z-index: 100;
-    transform: translate(-50%, -50%) scale(1.1) rotate(0deg) !important;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
-}
-
-.evidence-pin img {
-    width: 100%;
-    border: 4px solid #fff; /* Polaroid white border */
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-/* Positioning to match your High-Fi clusters */
-.pin-wei {
-    top: 20%; left: 30%;
-    width: 130px; transform: rotate(-4deg);
-}
-
-.pin-mom {
-    top: 55%; right: 15%;
-    width: 120px; transform: rotate(5deg);
-}
-
-.red-pin {
-    width: 12px; height: 12px;
-    background: #b30000;
-    border-radius: 50%;
-    position: absolute;
-    top: -6px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-}
-
-/* --- Pop-up Styling --- */
-.char-popup {
-    background: #121212;
-    border: 1px solid #b30000;
-    padding: 20px;
-    width: 85%;
-    position: relative;
-}
-
-.polaroid-frame {
-    width: 100%;
-    border: 8px solid #fff;
-    margin-bottom: 10px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    color: #fff; font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* --- High-Fi Character Popup Style --- */
-.char-popup {
-    background: #121212;
-    border: 1px solid #b30000; /* Blood red accent */
-    padding: 25px;
-    width: 85%;
-    max-width: 380px;
-    position: relative;
-    box-shadow: 0 0 40px rgba(0,0,0,0.9);
-    text-align: center;
-}
-
-.polaroid-frame {
-    width: 100%;
-    border: 12px solid #fff; /* Thick white polaroid border */
-    margin-bottom: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: rotate(-2deg); /* Adds a messy investigation feel */
-}
-
-.journal-text {
-    font-family: 'Permanent Marker', cursive;
-    color: #f5f5f5;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-}
-
-.lore-thought {
-    font-family: 'Just Me Again Down Here', cursive;
-    color: #ccc;
-    font-size: 1.2rem;
-    line-height: 1.4;
-}
-
-.close-btn {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    color: #fff;
-    font-size: 2.5rem;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.red-string {
-    position: absolute;
-    height: 2px;
-    background: #b30000; /* Blood red from your palette */
-    opacity: 0.6;
-    z-index: 5;
-    transform-origin: left center;
-    pointer-events: none; /* User can click through the string to the images */
-}
-
-/* Connects Wei Yi to the center of the board */
-.string-1 {
-    width: 150px;
-    top: 30%;
-    left: 45%;
-    transform: rotate(45deg);
-}
-
-/* Connects Mom to a lower evidence scrap */
-.string-2 {
-    width: 200px;
-    top: 65%;
-    right: 25%;
-    transform: rotate(-20deg);
-}
-
-.evidence-pin {
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Snappy "game" feel */
-}
-
-.evidence-pin:hover {
-    transform: scale(1.1) rotate(0deg) !important; /* Straights the photo and brings it forward */
-    z-index: 100;
-    filter: brightness(1.2);
-}
-
-.evidence-pin:active {
-    transform: scale(0.95); /* Shrinks slightly when clicked */
-}
-
-/* =========================================
-   MERCH PAGE: CONSTRUCTION ZONE
-   ========================================= */
-.construction-zone {
-    height: 80vh; /* Centers the content vertically */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background: #050505;
-}
-
-.police-tape {
-    background: #e6b800; /* Caution tape yellow */
-    color: #000;         /* Black text */
-    width: 120%;         /* Make it wider than the screen */
-    padding: 15px 0;
-    font-family: 'Special Elite', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    transform: rotate(-5deg); /* Tilts the tape */
-    margin: 30px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    letter-spacing: 5px;
-    border-top: 3px dashed #000;
-    border-bottom: 3px dashed #000;
-}
-
-.police-tape span {
-    border: 2px solid #000;
-    padding: 2px 10px;
-}
-
-/* =========================================
-   DESKTOP RESPONSIVE MODE (Min-Width: 1024px)
-   ========================================= */
-@media screen and (min-width: 1024px) {
-
-    /* 1. Unlock the Mobile Container Width */
-    .mobile-container {
-        max-width: 1200px; /* Expands to fit laptop screens */
-        border-left: none;
-        border-right: none;
-        box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Adds a nice glow */
-    }
-
-    /* 2. Transform the Sandwich Menu into a Top Bar */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 40px;
-        background: rgba(0,0,0,0.9);
-    }
-
-    .navbar {
-        width: auto;
-        padding: 0;
-        background: transparent;
-    }
-
-    .menu-icon {
-        display: none; /* Hide the sandwich icon on desktop */
-    }
-
-    .side-nav {
-            height: auto;         /* Reset height */
-            width: auto;          /* Let it take natural width */
-            position: static;     /* Put it back in the normal flow */
-            background: transparent; /* Remove the drawer background */
-            padding: 0;           /* Remove top padding */
-            box-shadow: none;     /* Remove shadow */
-            display: flex;        /* Align links horizontally */
-            gap: 20px;            /* Space between links */
-            overflow: visible;    /* Allow content to be seen */
-        }
-
-        .side-nav a {
-            font-size: 1rem;
-            padding: 10px 15px;
-            display: inline-block;
-            color: #ccc;          /* Light grey text */
-            transition: color 0.3s ease;
-        }
-        
-        .side-nav a:hover {
-            color: #b30000;       /* Red hover effect */
-            background: transparent;
-        }
-
-        .side-nav .closebtn {
-            display: none;        /* Hide the 'X' button */
-        }
-
-    /* 3. Fix the Hero Section sizing */
-    .hero-immersive {
-        height: 80vh;
-    }
-
-    .title-horror {
-        font-size: 8rem; /* Make title massive on desktop */
-    }
-
-        .side-nav {
-        align-items: center; /* This forces all links to align vertically in the center */
-    }
-
-    .side-nav a {
-        /* Existing styles... */
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 40px; /* Force a height */
-        line-height: 40px; /* Center text vertically */
-    }
-
-    /* 4. Fix the Community Hub (Grid Layout) */
-    .pinterest-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-        gap: 30px;
-        padding: 40px;
-    }
-
-    .hub-card {
-        width: 100%; /* Fill the grid cell */
-    }
-
-    /* 5. Fix the World Board Aspect Ratio */
-    /* This prevents the pins from drifting when the screen stretches */
-    .investigation-board {
-        height: 90vh;
-        width: 90%;
-        margin: 0 auto;
-        border: 2px solid #333;
-        /* Keep the background aspect ratio consistent */
-        background-size: cover; 
-    }
-
-    /* 6. Fix Merch/Construction/Profile Centering */
-    .construction-zone {
-        height: 70vh;
-    }
-}
-
-/* Update in style.css */
-
-.diary-section {
-    padding: 60px 20px; /* Reduced vertical padding slightly */
-    background: #050505;
-    text-align: center;
-    overflow: hidden; /* Prevents horizontal scrolling if scraps stick out */
-}
-
-.diary-collage {
-    position: relative;
-    width: 95%; /* Increased from 85% to fill more space */
-    max-width: 420px; /* Slightly wider max-width */
-    margin: 20px auto;
-    min-height: 500px;
-}
-
-.paper-base {
-    width: 100%; /* Keeps the paper inside the container boundaries */
-    margin-left: 0;
-    display: block;
-    box-shadow: 8px 8px 25px rgba(0,0,0,0.7); /* Stronger shadow for depth */
-}
-
-.small-title {
-    font-size: 1.5rem; /* Reduced from 2.5rem */
-    margin-top: 10px;
-    letter-spacing: 4px; /* Widens the text to keep it creepy */
-    color: #8b0000; /* Darker blood red */
-    opacity: 0.9;
-}
-
-/* 1. The Breathing Title Effect */
-@keyframes breathe {
-    0% { transform: scale(1); text-shadow: 3px 3px 15px rgba(0,0,0,0.9); }
-    50% { transform: scale(1.02); text-shadow: 3px 3px 25px rgba(179, 0, 0, 0.6); } /* Red glow pulse */
-    100% { transform: scale(1); text-shadow: 3px 3px 15px rgba(0,0,0,0.9); }
-}
-
-.title-horror {
-    animation: breathe 4s ease-in-out infinite;
-}
-
-/* 2. CRT Screen Flicker for Buttons */
-@keyframes flicker {
-    0% { opacity: 1; }
-    3% { opacity: 0.8; }
-    6% { opacity: 1; }
-    7% { opacity: 0.8; }
-    8% { opacity: 1; }
-    100% { opacity: 1; }
-}
-
-.btn-horror:hover {
-    animation: flicker 0.15s infinite;
-    background-color: #8b0000; /* Darker red */
-    color: #e0e0e0;
-}
-
-/* =========================================
-   NEW: CLUB INVITE & FOOTER STYLES
-   ========================================= */
-
-/* 1. The Join Club Section */
-.club-invite-section {
-    position: relative;
-    background-color: #0d0d0d; /* Dark black/grey */
-    padding: 80px 20px;
-    text-align: center;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.club-content {
-    position: relative;
-    z-index: 10;
-}
-
-/* Typography matching your image */
-.join-text {
-    font-family: 'Just Me Again Down Here', cursive;
-    font-size: 1.8rem;
-    color: #fff;
-    font-weight: normal;
-    letter-spacing: 1px;
-}
-
-.club-title {
-    font-family: 'Just Me Again Down Here', cursive; /* Using the handwritten font */
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 30px;
-    font-weight: normal;
-}
-
-.club-description {
-    font-family: 'Just Me Again Down Here', cursive;
-    font-size: 1.4rem;
-    color: #fff;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-.mystery-text {
-    font-family: 'Just Me Again Down Here', cursive;
-    font-size: 1.6rem;
-    color: #fff;
-    margin-bottom: 25px;
-}
-
-/* The Button */
-.btn-ghost {
-    display: inline-block;
-    background: transparent;
-    color: #ccc;
-    border: 1px solid #8b0000; /* Red Border */
-    padding: 10px 60px;
-    border-radius: 50px;
-    font-family: 'Special Elite', serif;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-ghost:hover {
-    background: #8b0000;
-    color: white;
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
-}
-
-/* Floating Polaroids */
-.decor-polaroid {
-    position: absolute;
-    opacity: 0.3; /* Faded like the image */
-    pointer-events: none;
-}
-
-.decor-polaroid img {
-    width: 150px;
-    border: 5px solid #fff;
-}
-
-.top-right-polaroid {
-    top: -20px;
-    right: -20px;
-    transform: rotate(15deg);
-}
-
-/* 2. The Global Footer (Copyright & Icons) */
-.global-footer {
-    background-color: #050505; /* Darker than the section above */
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid #222;
-}
-
-.footer-logo {
-    font-family: 'Permanent Marker', cursive;
-    color: #b30000; /* Red Logo */
-    font-size: 1.2rem;
-    line-height: 1.1;
-    margin-bottom: 10px;
-}
-
-.copyright-text {
-    font-family: 'Just Me Again Down Here', cursive;
-    font-size: 1rem;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.social-icons a {
-    color: #fff;
-    font-size: 0.8rem;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.social-icons a:hover {
-    opacity: 1;
-    color: #b30000;
-}
-
-/* =========================================
-   COMMUNITY HUB STYLES
-   ========================================= */
-
-/* --- 1. Hero & Header --- */
-.hub-container {
-    padding-bottom: 50px;
-    background: url('../images/background/hallway_dark.jpg') top center/contain no-repeat;
-    background-color: #0d0d0d; /* Fallback */
-}
-
-.hub-hero {
-    text-align: center;
-    padding-top: 20px;
-    margin-bottom: 20px;
-}
-
-.hub-mascot {
-    width: 50px;
-    opacity: 0.8;
-    margin-bottom: -10px;
-}
-
-.hub-title {
-    font-family: 'Permanent Marker', cursive;
-    color: #b30000;
-    font-size: 3rem;
-    line-height: 0.9;
-    text-shadow: 0 0 10px rgba(179, 0, 0, 0.5);
-}
-
-.hub-subtitle {
-    font-family: 'Just Me Again Down Here', cursive;
-    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translateX(50%) scale(1);
     font-size: 2rem;
-    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+    animation: pulse 2.5s ease-in-out infinite;
+    box-shadow: 0 5px 20px rgba(179, 0, 0, 0.6);
 }
 
-/* --- 2. Filters & Search --- */
-.hub-controls {
-    padding: 0 20px;
-    margin-bottom: 30px;
-}
-
-.tag-filters {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    border: none;
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-    font-family: sans-serif;
-    transition: transform 0.2s;
-}
-
-.filter-btn:hover { transform: scale(1.05); }
-
-/* Color Variables for Tags */
-.tag-theory { background-color: #00c853; color: #000; } /* Green */
-.tag-guides { background-color: #ffab00; color: #000; } /* Orange */
-.tag-fanart { background-color: #d81b60; color: #fff; } /* Pink/Red */
-.tag-spoilers { background-color: #90a4ae; color: #000; } /* Grey */
-
-.search-wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.hub-search {
-    width: 100%;
-    max-width: 350px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    background: #e0e0e0;
-    font-family: 'Special Elite', serif;
-}
-
-/* --- 3. Social Feed Cards --- */
-.social-feed {
-    padding: 0 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.feed-card {
-    background: rgba(20, 20, 20, 0.8); /* Semi-transparent dark */
-    border: 1px solid #444;
-    border-radius: 25px;
-    padding: 20px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #ccc; /* Placeholder grey circle */
-    border: 2px solid #fff;
-}
-
-.username {
-    color: #fff;
-    font-family: 'Special Elite', serif;
-    font-size: 1rem;
-}
-
-.meta-info {
-    color: #888;
-    font-size: 0.7rem;
-    font-family: sans-serif;
-}
-
-.card-content {
-    margin-bottom: 15px;
-}
-
-.post-title {
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.post-tags {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.tag-badge {
-    padding: 2px 10px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    font-weight: bold;
-}
-
-.post-text {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    font-family: sans-serif;
-}
-
-.post-image img {
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 10px;
-    border: 1px solid #333;
-}
-
-/* --- 4. Card Actions (Bottom Bar) --- */
-.card-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.comment-input {
-    flex-grow: 1;
-    background: #1a1a1a;
-    border: 1px solid #444;
-    border-radius: 20px;
-    padding: 8px 15px;
-    color: #666;
-    font-size: 0.8rem;
-    cursor: text;
-}
-
-.action-pill {
-    background: #e0e0e0;
-    color: #000;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.action-pill:hover {
-    background: #fff;
+@keyframes pulse {
+    0%, 100% { 
+        transform: translateX(50%) scale(1);
+        box-shadow: 0 5px 20px rgba(179, 0, 0, 0.6);
+    }
+    50% { 
+        transform: translateX(50%) scale(1.15);
+        box-shadow: 0 8px 30px rgba(179, 0, 0, 0.9);
+    }
 }
 
 /* =========================================
-   POST DETAIL MODAL STYLES (Paste at bottom of style.css)
+   8. MODALS & OVERLAYS
    ========================================= */
-
-/* The Full Screen Overlay */
-.post-modal-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    z-index: 5000; /* Extremely high z-index to sit on top */
-    flex-direction: column;
-    animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-}
-
-/* Modal Navbar */
-.modal-nav {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    background: rgba(20, 20, 20, 0.95);
-    border-bottom: 1px solid #333;
-    gap: 20px;
-}
-
-.close-modal-btn {
-    background: none;
-    border: none;
-    color: #ccc;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: 'Special Elite', serif;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.modal-title {
-    color: #fff;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.2rem;
-}
-
-/* Scrollable Content Area */
-.modal-content {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 80px; /* Space for bottom input */
-    /* Add the background image here so it's not transparent */
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
-                url('../images/background/hallway_dark.jpg') top center/cover no-repeat;
-}
-
-/* Post Details */
-.post-detail-header {
-    padding: 20px;
-    border-bottom: 1px solid #333;
-}
-
-.detail-title {
-    color: #fff;
-    font-size: 1.5rem;
-    margin: 15px 0 10px;
-    font-family: sans-serif;
-    font-weight: bold;
-}
-
-.detail-text {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
-
-.detail-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* Comments Section */
-.comments-section {
-    padding: 20px;
-}
-
-.comments-header {
-    color: #888;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-bottom: 25px;
-    font-family: sans-serif;
-}
-
-/* Individual Comment Block */
-.comment-block {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.comment-avatar {
-    width: 40px;
-    height: 40px;
-    background: #444;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.avatar-writer {
-    background: #fff;
-    border: 2px solid #b30000;
-}
-
-.comment-body {
-    flex-grow: 1;
-}
-
-.comment-meta {
-    margin-bottom: 5px;
-}
-
-.comment-user {
-    color: #fff;
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-right: 10px;
-}
-
-.user-highlight {
-    color: #b30000; /* Red for the writer */
-}
-
-.comment-role {
-    background: #333;
-    color: #aaa;
-    font-size: 0.6rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-right: 10px;
-    text-transform: uppercase;
-}
-
-.comment-time {
-    color: #666;
-    font-size: 0.8rem;
-}
-
-.comment-text {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 8px;
-}
-
-.comment-actions {
-    display: flex;
-    gap: 20px;
-    color: #666;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-/* Reply indentation */
-.comment-block.reply {
-    margin-left: 50px;
-    position: relative;
-    border-left: 2px solid #333;
-    padding-left: 15px;
-}
-
-/* Fixed Bottom Input Bar */
-.modal-footer-input {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 20px;
-    background: #000;
-    border-top: 1px solid #333;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 5001;
-}
-
-.user-avatar-small {
-    width: 30px;
-    height: 30px;
-    background: #555;
-    border-radius: 50%;
-}
-
-.dark-input {
-    flex-grow: 1;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 10px 15px;
-    border-radius: 20px;
-    color: #fff;
-    outline: none;
-}
-
-.send-btn {
-    background: #fff;
-    color: #000;
-    border: none;
-    width: 40px;
-    height: 35px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* =========================================
-   WORLD PAGE SPECIFIC STYLES
-   ========================================= */
-
-.world-intro {
-    padding: 40px 20px;
-    text-align: center;
-    background: #050505;
-}
-
-.world-text {
-    font-family: 'Special Elite', serif;
-    color: #ccc;
-    font-size: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Investigation Board Container */
-.board-scroll-container {
-    position: relative;
-    width: 100%;
-    height: 500px; /* Fixed height for scrolling */
-    overflow-y: auto;
-    background: #0d0d0d;
-}
-
-.board-img-bg {
-    width: 100%;
-    height: auto;
-    min-height: 800px; /* Make board taller than container */
-    display: block;
-}
-
-/* Evidence Pins */
-.evidence-pin {
-    position: absolute;
-    cursor: pointer;
-    z-index: 10;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.red-pin {
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
-    border: 1px solid #500;
-    transition: transform 0.2s ease;
-}
-
-.evidence-pin:hover .red-pin {
-    transform: scale(1.3);
-    filter: brightness(1.5);
-}
-
-/* Polaroid Popups */
 .lore-overlay {
     display: none;
     position: fixed;
@@ -1515,6 +484,16 @@ body {
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
+}
+
+.lore-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 30px;
+    width: 85%;
+    max-width: 350px;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
+    text-align: center;
 }
 
 .polaroid-popup {
@@ -1573,103 +552,319 @@ body {
 }
 
 /* =========================================
-   ENHANCED ANIMATIONS
+   9. CLUB INVITE SECTION
    ========================================= */
-
-@keyframes float1 {
-    0%, 100% { transform: rotate(12deg) translateY(0); }
-    50% { transform: rotate(14deg) translateY(-10px); }
+.club-invite-section {
+    position: relative;
+    background-color: #0d0d0d;
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes float2 {
-    0%, 100% { transform: rotate(-8deg) translateY(0); }
-    50% { transform: rotate(-10deg) translateY(-8px); }
+.club-content {
+    position: relative;
+    z-index: 10;
 }
 
-/* Apply to polaroids */
-.photo-top-right {
-    animation: float1 6s ease-in-out infinite;
+.join-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 1px;
 }
 
-.photo-bottom-left {
-    animation: float2 7s ease-in-out infinite;
+.club-title {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: normal;
 }
 
-/* Pulsing question mark */
-@keyframes pulse {
-    0%, 100% {
-        transform: translateX(50%) scale(1);
-        box-shadow: 0 5px 20px rgba(179, 0, 0, 0.6);
-    }
-    50% {
-        transform: translateX(50%) scale(1.15);
-        box-shadow: 0 8px 30px rgba(179, 0, 0, 0.9);
-    }
+.club-description {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.4rem;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
-.lore-hint {
-    animation: pulse 2.5s ease-in-out infinite;
-}
-
-/* Fade animations for modals */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+.mystery-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 25px;
 }
 
 /* =========================================
-   RESPONSIVE ENHANCEMENTS
+   10. COMMUNITY HUB STYLES
    ========================================= */
-
-@media (max-width: 375px) {
-    .title-horror {
-        font-size: 4rem;
-    }
-    
-    .btn-horror {
-        padding: 12px 35px;
-        font-size: 0.85rem;
-    }
-    
-    .photo-top-right {
-        width: 150px;
-    }
-    
-    .photo-bottom-left {
-        width: 120px;
-    }
+.hub-container {
+    padding-bottom: 50px;
+    background: url('../images/background/hallway_dark.jpg') top center/contain no-repeat;
+    background-color: #0d0d0d;
 }
 
-@media (max-height: 700px) {
-    .hero-immersive {
-        min-height: 500px;
-    }
+.hub-hero {
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* Better touch targets */
-@media (hover: none) and (pointer: coarse) {
-    .menu-icon,
-    .auth-link,
-    .btn-horror,
-    .lore-hint {
-        min-width: 44px;
-        min-height: 44px;
-    }
+.hub-title {
+    font-family: 'Permanent Marker', cursive;
+    color: #b30000;
+    font-size: 3rem;
+    line-height: 0.9;
+    text-shadow: 0 0 10px rgba(179, 0, 0, 0.5);
+}
+
+.hub-subtitle {
+    font-family: 'Just Me Again Down Here', cursive;
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.hub-controls {
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.tag-filters {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: transform 0.2s;
+}
+
+.filter-btn:hover { 
+    transform: scale(1.05); 
+}
+
+.tag-theory { background-color: #00c853; }
+.tag-guides { background-color: #ffab00; }
+.tag-fanart { background-color: #d81b60; color: #fff; }
+.tag-spoilers { background-color: #90a4ae; }
+
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.hub-search {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background: #e0e0e0;
+    font-family: 'Special Elite', serif;
+}
+
+.social-feed {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feed-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid #444;
+    border-radius: 25px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 2px solid #fff;
+}
+
+.username {
+    color: #fff;
+    font-family: 'Special Elite', serif;
+    font-size: 1rem;
+}
+
+.meta-info {
+    color: #888;
+    font-size: 0.7rem;
+    font-family: sans-serif;
+}
+
+.card-content {
+    margin-bottom: 15px;
+}
+
+.post-title {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.post-tags {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tag-badge {
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.post-text {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-family: sans-serif;
+}
+
+.post-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid #333;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-input {
+    flex-grow: 1;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: #666;
+    font-size: 0.8rem;
+    cursor: text;
+}
+
+.action-pill {
+    background: #e0e0e0;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.action-pill:hover {
+    background: #fff;
 }
 
 /* =========================================
-   AUTH SECTION STYLES (Add to style.css)
+   11. WORLD PAGE STYLES
+   ========================================= */
+.world-intro {
+    padding: 40px 20px;
+    text-align: center;
+    background: #050505;
+}
+
+.world-text {
+    font-family: 'Special Elite', serif;
+    color: #ccc;
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.board-scroll-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
+    background: #0d0d0d;
+}
+
+.board-img-bg {
+    width: 100%;
+    height: auto;
+    min-height: 800px;
+    display: block;
+}
+
+.evidence-pin {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red-pin {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    border: 1px solid #500;
+    transition: transform 0.2s ease;
+}
+
+.evidence-pin:hover .red-pin {
+    transform: scale(1.3);
+    filter: brightness(1.5);
+}
+
+/* =========================================
+   12. AUTH SECTION
    ========================================= */
 .auth-section {
     min-height: 70vh;
@@ -1696,26 +891,6 @@ body {
     color: #f5f5f5;
     font-size: 1.8rem;
     margin-bottom: 30px;
-}
-
-.auth-link {
-    border: 1px solid #444;
-    padding: 8px 20px;       /* Increased padding slightly */
-    border-radius: 20px;
-    font-size: 0.8rem;       /* Slightly larger */
-    text-decoration: none;
-    color: #ccc;
-    
-    font-family: 'Special Elite', serif; 
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.auth-link:hover {
-    background: #b30000;
-    color: #fff;
-    border-color: #b30000;
 }
 
 .horror-input {
@@ -1752,130 +927,257 @@ body {
     text-decoration: underline;
 }
 
-.btn-primary {
-    background: transparent;
-    color: #fff;
-    border: 2px solid #b30000;
-    padding: 15px 40px;
-    border-radius: 30px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Special Elite', serif;
-    width: 100%;
-    margin-top: 10px;
+/* =========================================
+   13. CONSTRUCTION ZONE
+   ========================================= */
+.construction-zone {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: #050505;
 }
 
-.btn-primary:hover {
-    background: #b30000;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(179, 0, 0, 0.3);
+.police-tape {
+    background: #e6b800;
+    color: #000;
+    width: 120%;
+    padding: 15px 0;
+    font-family: 'Special Elite', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transform: rotate(-5deg);
+    margin: 30px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    letter-spacing: 5px;
+    border-top: 3px dashed #000;
+    border-bottom: 3px dashed #000;
+}
+
+.police-tape span {
+    border: 2px solid #000;
+    padding: 2px 10px;
 }
 
 /* =========================================
-   FIXES FOR VISIBILITY & LAYOUT
+   14. FOOTER
    ========================================= */
-
-/* Makes the "Developed By" text white so it's visible on dark backgrounds */
-.developer-text {
-    font-family: 'Special Elite', serif;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: #e0e0e0 !important; /* Forces it to be light grey/white */
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); /* Adds shadow for readability */
-    font-weight: bold;
-    position: relative; 
-    z-index: 10;
+.global-footer {
+    background-color: #050505;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #222;
 }
 
-/* Reduces the big title size */
-.title-horror {
-    font-size: 3.5rem; /* Reduced from 5rem */
-}
-
-/* Positions the logos in the top right */
-.hero-logos {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 100px;
-    z-index: 20;
-}
-
-/* Centers the apple */
-.hero-apple {
-    display: block;
-    width: 180px;            /* Increased from 120px/140px */
-    max-width: 40%;
-    margin: 0 auto -25px auto; /* Negative bottom margin pulls the title UP */
-    animation: floatApple 4s ease-in-out infinite;
-    z-index: 10;
-    position: relative;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-}
-
-@keyframes floatApple {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Update the Main Title */
-.title-horror {
+.footer-logo {
     font-family: 'Permanent Marker', cursive;
-    font-size: 3.8rem;       /* Slightly larger balance */
     color: #b30000;
-    line-height: 0.9;
-    
-    /* TIGHTER SPACING */
-    margin: 5px 0 25px 0;    /* Reduced top margin to pull it to the apple */
-    
-    letter-spacing: 2px;
-    position: relative;
-    z-index: 6;
-
-    /* HARD BLACK OUTLINE to fix "Vibration" */
-    text-shadow: 
-        3px 3px 0 #000,
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0 0 30px rgba(179, 0, 0, 0.4); /* Subtle glow behind the black */
-    
-    animation: breathe 4s ease-in-out infinite; 
+    font-size: 1.2rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
 }
 
-/* Update the Breathing Animation to match the new shadow */
-@keyframes breathe {
-    0% { 
-        transform: scale(1); 
-        text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 30px rgba(179, 0, 0, 0.4);
+.copyright-text {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    color: #b30000;
+}
+
+/* =========================================
+   15. DESKTOP RESPONSIVE
+   ========================================= */
+@media screen and (min-width: 1024px) {
+    .mobile-container {
+        max-width: 1200px;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5);
     }
-    50% { 
-        transform: scale(1.02); 
-        text-shadow: 4px 4px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 50px rgba(179, 0, 0, 0.8); /* Glows brighter */
-    } 
-    100% { 
-        transform: scale(1); 
-        text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 30px rgba(179, 0, 0, 0.4);
+
+    /* Fix: Remove the separate header rule and style header properly */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+        background: rgba(0,0,0,0.9);
+        padding: 0 40px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        background: transparent;
+        width: 100%;
+    }
+
+    .menu-icon {
+        display: none; /* Hide the sandwich icon on desktop */
+    }
+
+    .side-nav {
+        height: auto;
+        width: auto;
+        position: static;
+        background: transparent;
+        padding: 0;
+        display: flex;
+        gap: 25px;
+        overflow: visible;
+        align-items: center;
+        margin-left: auto; /* Push to the right */
+    }
+
+    .side-nav a {
+        font-size: 1rem;
+        padding: 10px 15px;
+        display: inline-block;
+        color: #ccc;
+        font-family: 'Special Elite', serif;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 1px solid transparent;
+        border-radius: 20px;
+    }
+
+    .side-nav a:hover {
+        color: #b30000;
+        border-color: #b30000;
+        background: transparent;
+    }
+
+    .side-nav .closebtn {
+        display: none; /* Hide the 'X' button */
+    }
+
+    .auth-link {
+        margin-left: 20px; /* Add spacing between nav links and login button */
+    }
+
+    /* Keep the auth link aligned properly */
+    .navbar .auth-link {
+        margin-left: 0;
+    }
+
+    .hero-immersive {
+        height: 80vh;
+    }
+
+    .title-horror {
+        font-size: 8rem; /* Make title massive on desktop */
+    }
+
+    .hero-logos {
+        width: 150px; /* Larger logos on desktop */
+        top: 40px;
+        right: 40px;
+    }
+
+    .hero-apple {
+        width: 250px;
+        max-width: 30%;
+    }
+
+    .diary-collage {
+        max-width: 600px;
+    }
+
+    .social-feed {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .construction-zone {
+        height: 70vh;
     }
 }
 
-
-.scrap.raw-scribble {
-    background: transparent !important; /* Forces transparency */
-    padding: 0 !important;              /* Removes the polaroid spacing */
-    box-shadow: none !important;        /* Removes the blocky shadow */
-    border: none !important;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6)); /* Adds a natural shadow to the ink ink instead */
+/* =========================================
+   16. SMALL SCREEN ADJUSTMENTS
+   ========================================= */
+@media (max-width: 375px) {
+    .title-horror {
+        font-size: 4rem;
+    }
+    
+    .btn-horror {
+        padding: 12px 35px;
+        font-size: 0.85rem;
+    }
+    
+    .photo-top-right {
+        width: 150px;
+    }
+    
+    .photo-bottom-left {
+        width: 120px;
+    }
 }
 
-/* Optional: Make the scribble wiggle slightly for horror effect */
-.scrap.raw-scribble:hover {
-    transform: scale(1.1) rotate(-5deg) !important;
-    box-shadow: none !important; /* Ensures no white box appears on hover */
+@media (max-height: 700px) {
+    .hero-immersive {
+        min-height: 500px;
+    }
 }
+
+/* Better touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .menu-icon,
+    .auth-link,
+    .btn-horror,
+    .lore-hint {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}       
