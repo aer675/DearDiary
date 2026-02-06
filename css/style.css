@@ -133,14 +133,16 @@ body {
    ========================================= */
 .hero-immersive {
     height: 90vh;
-    background: #000; /* Solid black background */
+    min-height: 600px;  /* ADD THIS */
+    background: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;  /* CHANGE from 20px */
     position: relative;
+    overflow: hidden;  /* ADD THIS */
 }
 
 /* Remove the before pseudo-element (texture overlay) */
@@ -150,12 +152,23 @@ body {
 
 .title-horror {
     font-family: 'Permanent Marker', cursive;
-    font-size: 4.5rem; /* Slightly larger */
+    font-size: 5rem;  /* Increased from 4.5rem */
     color: #b30000;
     line-height: 0.85;
-    margin: 20px 0 10px 0; /* Less bottom margin */
-    text-shadow: 3px 3px 15px rgba(0,0,0,0.9);
-    letter-spacing: 1px;
+    margin: 20px 0 15px 0;
+    text-shadow: 
+        4px 4px 0 rgba(0,0,0,0.9),
+        0 0 30px rgba(179, 0, 0, 0.6),
+        0 0 60px rgba(179, 0, 0, 0.3);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;  /* ADD THIS */
+}
+
+.title-horror:hover {
+    text-shadow: 
+        4px 4px 0 rgba(0,0,0,0.9),
+        0 0 40px rgba(179, 0, 0, 0.9),
+        0 0 80px rgba(179, 0, 0, 0.5);
 }
 
 .developer-text {
