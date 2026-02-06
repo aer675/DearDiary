@@ -8,31 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<script src="js/script.js"></script>
-
 <body>
-
-<!--Header Section-->
     <div class="vignette"></div>
     <div class="mobile-container">
-    <header>
-        <nav class="navbar">
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
-            <a href="login.html" class="auth-link">Login / Signup</a>
-        </nav>
+        <header>
+            <nav class="navbar">
+                <div class="menu-icon" onclick="toggleMenu()" aria-label="Open menu" role="button">☰</div>
+                <a href="login.html" class="auth-link">Login / Signup</a>
+            </nav>
 
-        <div id="sideNav" class="side-nav">
-            <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-            <a href="index.html">Home</a>
-            <a href="world.html">World</a>
-            <a href="merch.html">Merch</a>
-            <a href="hub.html">Community Hub</a>
-            <a href="profile.html">My Profile</a>
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="world.html">World</a>
+                <a href="merch.html">Merch</a>
+                <a href="hub.html">Community Hub</a>
+                <a href="profile.html">My Profile</a>
+            </div>
+        </header>
 
-        </div>
-    </header>
-
-<!--Main Content Section-->
         <main>
             <section class="hero-immersive" style="background: 
                 linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
@@ -52,19 +46,19 @@
             <section class="diary-section">
                 <h2 class="section-subtitle">Explore Through Wei Yi's Diary</h2>
                 
-            <div class="diary-collage">
-                <img src="images/background/diary.jpg" class="paper-base" alt="Diary Page">
+                <div class="diary-collage">
+                    <img src="images/background/diary.jpg" class="paper-base" alt="Diary Page">
 
-                <a href="#item1" class="scrap photo-top-right transparent-item" onclick="openLore()">
-                    <img src="images/interface/polaroid.png" alt="Memory 1">
-                </a>
-                
-                <a href="#item1" class="scrap photo-bottom-left transparent-item" onclick="openLore()">
-                    <img src="images/interface/scribbles.png" alt="Memory 2">
-                </a>
-                
-                <div class="lore-hint">?</div>
-            </div>
+                    <a href="#item1" class="scrap photo-top-right transparent-item" onclick="openLore()">
+                        <img src="images/interface/polaroid.png" alt="Memory 1">
+                    </a>
+                    
+                    <a href="#item1" class="scrap photo-bottom-left transparent-item" onclick="openLore()">
+                        <img src="images/interface/scribbles.png" alt="Memory 2">
+                    </a>
+                    
+                    <div class="lore-hint" onclick="openLore()" role="button" aria-label="Open lore">?</div>
+                </div>
 
                 <h2 class="title-horror small-title">CAN YOU SURVIVE?</h2>
             </section>
@@ -78,42 +72,39 @@
                 </div>
             </section>
 
-<!--Join the club section-->
             <section class="club-invite-section">     
-                    <div class="club-content">
-                        <h3 class="join-text">Join the writers of</h3>
-                        <h2 class="club-title">Dear Diary club</h2>
-                        
-                        <p class="club-description">
-                            Sign up to join our Dear Diary<br>
-                            Club and receive monthly<br>
-                            newsletters & exclusive rewards.
-                        </p>
-                        
-                        <p class="mystery-text">Mystery awaits</p>
-                        
-                        <a href="signup.html" class="btn-ghost">Sign Up</a>
-                    </div>
-                </section>
-            </main> 
-
-<!--Footer Section-->
-            <footer class="global-footer">
-                <div class="footer-logo">DEAR<br>DIARY</div>
-                <p class="copyright-text">Third Hour Co. All rights reserved.</p>
-                
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#"><i class="fa-brands fa-google"></i></a>
-                    <a href="#"><i class="fa-brands fa-steam"></i></a>
+                <div class="club-content">
+                    <h3 class="join-text">Join the writers of</h3>
+                    <h2 class="club-title">Dear Diary club</h2>
+                    
+                    <p class="club-description">
+                        Sign up to join our Dear Diary<br>
+                        Club and receive monthly<br>
+                        newsletters & exclusive rewards.
+                    </p>
+                    
+                    <p class="mystery-text">Mystery awaits</p>
+                    
+                    <a href="signup.html" class="btn-ghost">Sign Up</a>
                 </div>
-            </footer>
+            </section>
         </main>
+
+        <footer class="global-footer">
+            <div class="footer-logo">DEAR<br>DIARY</div>
+            <p class="copyright-text">Third Hour Co. All rights reserved.</p>
+            
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+                <a href="#" aria-label="Steam"><i class="fa-brands fa-steam"></i></a>
+            </div>
+        </footer>
     </div>
 
     <div id="item1" class="lore-overlay">
@@ -127,15 +118,6 @@
         </div>
     </div>
 
-    <script>
-        function openLore() {
-            document.getElementById("item1").style.display = "block";
-        }
-
-        function closeLore() {
-            document.getElementById("item1").style.display = "none";
-        }
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
