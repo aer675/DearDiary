@@ -183,6 +183,54 @@ body {
 .btn-horror {
     background: transparent;
     color: #fff;
+    border: 2px solid #444;  /* Increased from 1px */
+    padding: 14px 45px;  /* Increased padding */
+    border-radius: 30px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother */
+    font-family: 'Special Elite', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-horror::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #b30000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn-horror:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.btn-horror:hover {
+    border-color: #b30000;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 30px rgba(179, 0, 0, 0.4),
+        0 5px 15px rgba(0,0,0,0.6);
+}
+
+.btn-horror:active {
+    transform: translateY(-1px);
+}
+
+.btn-horror {
+    background: transparent;
+    color: #fff;
     border: 1px solid #444;
     padding: 12px 40px;
     border-radius: 30px;
@@ -376,17 +424,35 @@ body {
 
 .scrap {
     position: absolute;
-    background: transparent; 
-    padding: 0; 
-    border: none; 
-    box-shadow: 4px 4px 15px rgba(0,0,0,0); 
+    background: #fff;
+    padding: 8px 8px 25px 8px;
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);  /* Bouncy */
     z-index: 5;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .scrap img {
     width: 100%;
     display: block;
+    filter: sepia(0.2);
+    transition: filter 0.3s ease;
+}
+
+.scrap:hover {
+    transform: scale(1.2) rotate(0deg) !important;
+    box-shadow: 
+        0 15px 50px rgba(179, 0, 0, 0.5),
+        0 8px 25px rgba(0,0,0,0.9),
+        0 0 0 2px rgba(179, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.scrap:hover img {
+    filter: sepia(0) brightness(1.1);
 }
 
 /* --- Investigation Board Base --- */
@@ -613,14 +679,17 @@ body {
     }
 
     .side-nav {
-        height: auto;
-        width: auto !important; /* Force overrides the JS width */
-        position: static; /* Removes it from 'absolute' floating */
-        background-color: transparent;
-        padding-top: 0;
-        display: flex; /* Line up links horizontally */
-        gap: 20px;
-        overflow: visible;
+        height: 100%;
+        width: 0;
+        position: fixed;  /* CHANGE from absolute */
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 100%);  /* Gradient */
+        overflow-x: hidden;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother */
+        padding-top: 60px;
+        box-shadow: 5px 0 30px rgba(0,0,0,0.8);  /* ADD shadow */
     }
 
     .side-nav a {
@@ -1427,4 +1496,100 @@ body {
 
 .close-x:hover {
     color: #b30000;
+}
+
+/* =========================================
+   ENHANCED ANIMATIONS
+   ========================================= */
+
+@keyframes float1 {
+    0%, 100% { transform: rotate(12deg) translateY(0); }
+    50% { transform: rotate(14deg) translateY(-10px); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(-10deg) translateY(-8px); }
+}
+
+/* Apply to polaroids */
+.photo-top-right {
+    animation: float1 6s ease-in-out infinite;
+}
+
+.photo-bottom-left {
+    animation: float2 7s ease-in-out infinite;
+}
+
+/* Pulsing question mark */
+@keyframes pulse {
+    0%, 100% {
+        transform: translateX(50%) scale(1);
+        box-shadow: 0 5px 20px rgba(179, 0, 0, 0.6);
+    }
+    50% {
+        transform: translateX(50%) scale(1.15);
+        box-shadow: 0 8px 30px rgba(179, 0, 0, 0.9);
+    }
+}
+
+.lore-hint {
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Fade animations for modals */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/* =========================================
+   RESPONSIVE ENHANCEMENTS
+   ========================================= */
+
+@media (max-width: 375px) {
+    .title-horror {
+        font-size: 4rem;
+    }
+    
+    .btn-horror {
+        padding: 12px 35px;
+        font-size: 0.85rem;
+    }
+    
+    .photo-top-right {
+        width: 150px;
+    }
+    
+    .photo-bottom-left {
+        width: 120px;
+    }
+}
+
+@media (max-height: 700px) {
+    .hero-immersive {
+        min-height: 500px;
+    }
+}
+
+/* Better touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .menu-icon,
+    .auth-link,
+    .btn-horror,
+    .lore-hint {
+        min-width: 44px;
+        min-height: 44px;
+    }
 }
