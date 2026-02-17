@@ -907,7 +907,7 @@ body::before {
    12. AUTH SECTION
    ========================================= */
 .auth-section {
-    min-height: calc(100vh - 200px); /* accounts for header + footer */
+    min-height: calc(100vh - 200px); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -943,6 +943,17 @@ body::before {
         inset 0 0 40px rgba(0,0,0,0.8),
         0 20px 60px rgba(0,0,0,0.9),
         0 0 60px rgba(179, 0, 0, 0.25);
+    animation: floatLogin 6s ease-in-out infinite;
+
+}
+
+.auth-box .journal-text {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(179,0,0,0.6);
 }
 
 
