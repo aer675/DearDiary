@@ -123,23 +123,26 @@ body::before {
 }
 
 .auth-link {
-    border: 1px solid #444;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #ccc;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.9rem;
     font-family: 'Special Elite', serif;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
+    color: #fff;
     transition: all 0.3s ease;
 }
 
+
 .auth-link:hover {
     background: #b30000;
-    color: #fff;
     border-color: #b30000;
+    box-shadow: 0 0 20px rgba(179,0,0,0.5);
 }
+
 
 .side-nav {
     height: 100%;
