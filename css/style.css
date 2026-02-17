@@ -32,14 +32,26 @@
 }
 
 body {
-    background: 
+    background:
         radial-gradient(circle at center, #1a1a1a 0%, #000 100%),
         url('../images/background/wood-texture.jpg');
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
+}
+
+/* Center container horizontally only */
+.mobile-container {
+    width: 100%;
+    max-width: 450px;
+    min-height: 100vh;
+    background-color: #0d0d0d;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8),
+                0 0 20px rgba(179, 0, 0, 0.2);
+    position: relative;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+    margin: 0 auto;   /* IMPORTANT FIX */
 }
 
 body::after {
