@@ -98,7 +98,7 @@ body::before {
     width: 100%;
     max-width: 450px;
     min-height: 100vh;
-    background-color: #0d0d0d;
+    background: transparent;
     box-shadow: 0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(179, 0, 0, 0.2);
     position: relative;
     overflow-x: hidden;
@@ -937,20 +937,17 @@ body::before {
 
 
 .auth-box {
-    background: rgba(20, 20, 20, 0.95);
-    border: 1px solid #333;
-    padding: 40px 30px;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 50px 40px;
     width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
+    max-width: 420px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow:
-        inset 0 0 40px rgba(0,0,0,0.8),
-        0 20px 60px rgba(0,0,0,0.9),
-        0 0 60px rgba(179, 0, 0, 0.25);
-    animation: floatLogin 6s ease-in-out infinite;
-
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
 }
+
 
 .auth-box .journal-text {
     font-family: 'Special Elite', serif;
@@ -1088,7 +1085,8 @@ body::before {
         position: sticky;
         top: 0;
         width: 100%;
-        background: rgba(0,0,0,0.9);
+        background: transparent;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
         padding: 0 80px;
         z-index: 1100;
     }
@@ -1338,4 +1336,40 @@ body::before {
 
 .auth-link:hover {
     text-decoration: none !important;
+}
+
+/* =========================================
+   CENTERING FIX
+   ========================================= */
+
+/* Ensure the main container allows for full-screen centering */
+.mobile-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Force the auth section to take up the full available height and center content */
+.auth-section {
+    flex-grow: 1; /* Takes up remaining space between header and footer */
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    min-height: 70vh;        /* Adjust this if it feels too high/low */
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Ensure the box itself doesn't have weird margins pushing it */
+.auth-box {
+    margin: 0; 
+    position: relative;
+    z-index: 10;
+}
+
+/* Fix for Desktop: Ensure the header doesn't push the login box to the left */
+@media screen and (min-width: 1024px) {
+    .auth-section {
+        max-width: 100%;
+        padding: 0;
+    }
 }
