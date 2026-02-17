@@ -42,17 +42,13 @@ body {
 /* Center container horizontally only */
 .mobile-container {
     width: 100%;
-    max-width: 450px;
     min-height: 100vh;
     background-color: #0d0d0d;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8),
-                0 0 20px rgba(179, 0, 0, 0.2);
     position: relative;
     overflow-x: hidden;
     scroll-behavior: smooth;
-
-    margin: 0 auto;   /* IMPORTANT FIX */
 }
+
 
 body::after {
     content: "";
@@ -1078,6 +1074,12 @@ body::before {
     .navbar {
         max-width: 1400px;
         margin: 0 auto;
+    }
+
+    .mobile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
     }
 
 
