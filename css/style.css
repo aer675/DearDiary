@@ -1065,11 +1065,23 @@ body::before {
    15. DESKTOP RESPONSIVE
    ========================================= */
 @media screen and (min-width: 1024px) {
-    .mobile-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-}
+
+    header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 0 80px;
+        z-index: 1100;
+    }
+
+    .navbar {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+
+
 
 
     /* Fix: Remove the separate header rule and style header properly */
@@ -1089,6 +1101,11 @@ body::before {
         background: transparent;
         width: 100%;
     }
+
+    header {
+    width: 100%;
+    }
+
 
     .menu-icon {
         display: none; /* Hide the sandwich icon on desktop */
