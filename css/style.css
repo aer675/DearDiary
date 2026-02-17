@@ -1099,6 +1099,18 @@ body::before {
         padding: 0 40px;
     }
 
+    .navbar {
+    padding: 20px 60px;
+    }
+
+    .side-nav {
+        gap: 40px;
+    }
+
+    .side-nav a {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
 
 
 
@@ -1174,6 +1186,13 @@ body::before {
     .navbar .auth-link {
         margin-left: 0;
     }
+
+    .auth-link {
+    padding: 12px 28px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    }
+
 
     .hero-immersive {
         height: 80vh;
