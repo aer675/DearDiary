@@ -50,6 +50,10 @@ body {
     scroll-behavior: smooth;
 }
 
+.mobile-container {
+    margin: 0 auto;
+}
+
 
 body::after {
     content: "";
