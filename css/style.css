@@ -33,11 +33,12 @@
 
 body {
     background:
-        radial-gradient(circle at center, #1a1a1a 0%, #000 100%),
-        url('../images/background/wood-texture.jpg');
-    background-size: cover;
+        radial-gradient(circle at center, rgba(179,0,0,0.25) 0%, #000 60%),
+        #000;
+    background-attachment: fixed;
     min-height: 100vh;
 }
+
 
 /* Center container horizontally only */
 .mobile-container {
