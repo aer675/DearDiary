@@ -356,3 +356,6 @@ body {
     margin-top: 5px;
 }
 
+.auth-dev {
+    margin-bottom: 30px;   /* pushes input fields down */
+}
