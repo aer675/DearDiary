@@ -361,17 +361,15 @@ body {
 }
 
 .publisher-logo {
-    margin-top: 80px;
+    margin-top: 50px;
     text-align: center;
 }
 
 .publisher-logo img {
-    width: 140px;
-    opacity: 0.9;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+    width: 180px;
+    opacity: 0.8;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
 .publisher-logo img:hover {
     transform: scale(1.05);
     opacity: 1;
