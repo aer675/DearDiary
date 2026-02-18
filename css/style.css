@@ -346,7 +346,7 @@ body {
 }
 
 .auth-footer .footer-logo {
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Just Me Again Down Here', cursive;
     color: #d60000;
     font-size: 1rem;
 }
@@ -358,4 +358,21 @@ body {
 
 .auth-dev {
     margin-bottom: 30px;   /* pushes input fields down */
+}
+
+.publisher-logo {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.publisher-logo img {
+    width: 140px;
+    opacity: 0.9;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.publisher-logo img:hover {
+    transform: scale(1.05);
+    opacity: 1;
 }
