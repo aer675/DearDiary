@@ -9,14 +9,16 @@
     
     <style>
         /* Base Styles & Background */
+      /* Base Styles & Background */
         body {
             margin: 0;
             padding: 0;
             background-color: #050505;
-            background-image: url('images/murder-board.png'); /* Your creepy background */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-image: url('images/murder-board.png'); 
+            background-size: 100% auto; /* Fits the width perfectly, scales height */
+            background-position: top center; /* Starts at the very top of the board */
+            background-attachment: scroll; /* MAKES IT SCROLL WITH THE PAGE! */
+            background-repeat: repeat-y; /* If the page gets too long, the board continues */
             font-family: sans-serif;
             color: #fff;
         }
@@ -169,15 +171,15 @@
 
     <div class="characters-container">
         
-        <div class="character-card" onclick="openModal('Gu Wei Yi', 'A Singaporean Girl with her diary. Tries her best to fit in.')">
+        <div class="character-card" onclick="openModal('Gu Wei Yi 顾唯一', 'A Singaporean Girl with her diary. Tries her best to fit in.')">
             <img src="images/weiyi.png" alt="Wei Yi">
         </div>
 
-        <div class="character-card" onclick="openModal('The Bully', 'Relentless and cruel. Hides a dark secret behind a popular facade.')">
+        <div class="character-card" onclick="openModal('Wen Zi Qian 温子谦', 'Wei Yi’s school bully. Known for bullying Wei Yi since Secondary 2.')">
             <img src="images/bully.png" alt="The Bully">
         </div>
 
-        <div class="character-card" onclick="openModal('The Mom', 'Overbearing and anxious. What is she trying to protect Wei Yi from?')">
+        <div class="character-card" onclick="openModal('Mrs Gu Mei Qi顾美琪', 'Wei Yi’s one and only family  mother. Known for being strict。')">
             <img src="images/mom.png" alt="The Mom">
         </div>
 
