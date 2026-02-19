@@ -27,18 +27,17 @@ loginForm.addEventListener("submit", async function(e)
 
     e.preventDefault();
 
-    const email = document.getElementById("username").value;
+    const email = document.getElementById("loginEmail").value;
 
-    const password = document.getElementById("password").value;
+    const password = document.getElementById("loginPassword").value;
 
 
 
     if(email === "" || password === "")
     {
-        errorMessage.textContent = "All fields required.";
+        alert("All fields required.");
         return;
     }
-
 
 
     try
@@ -55,10 +54,9 @@ loginForm.addEventListener("submit", async function(e)
     catch(error)
     {
 
-        errorMessage.textContent = error.message;
+        alert(error.message);
 
     }
-
 
 });
 
