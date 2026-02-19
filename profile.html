@@ -15,6 +15,7 @@
             background-color: #050505;
             font-family: sans-serif;
             color: #eaeaea;
+            overflow-x: hidden;
         }
 
         .jmadh-font { font-family: 'Just Me Again Down Here', cursive; }
@@ -24,21 +25,31 @@
             position: fixed; top: 0; left: 0; width: 100%;
             background-color: rgba(10, 10, 10, 0.95);
             padding: 15px 20px; box-sizing: border-box;
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: flex-end; /* Align right since audio is gone */
+            align-items: center;
             z-index: 1000; border-bottom: 1px solid #333;
         }
-        .audio-toggle { display: flex; align-items: center; }
-        .audio-toggle img { width: 30px; cursor: pointer; }
-        .pause-btn { display: none; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a {
+
+        /* Desktop Nav Menu */
+        .nav-menu { display: flex; gap: 15px; align-items: center; }
+        .nav-menu a {
             color: #fff; text-decoration: none; font-weight: bold;
             font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; transition: 0.3s;
         }
-        .nav-links a:hover { background-color: #ff0000; color: #000; }
+        .nav-menu a:hover { background-color: #ff0000; color: #000; }
         .active-link { border-bottom: 2px solid #ff0000; }
 
-        /* DESKTOP Profile Banner & Header Layout */
+        /* Mobile Hamburger Icon */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            margin-top: -5px;
+        }
+
+        /* Profile Banner & Header Layout */
         .profile-wrapper {
             max-width: 1000px; 
             margin: 0 auto;
@@ -84,7 +95,6 @@
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8));
         }
 
-        /* Profile Text Details */
         .profile-header-row {
             display: flex;
             justify-content: space-between;
@@ -114,7 +124,6 @@
         }
         .edit-btn:hover { background-color: rgba(204,0,0,0.2); }
 
-        /* Likes Stat */
         .stat-row {
             display: flex;
             align-items: center;
@@ -126,112 +135,87 @@
         .stat-text { font-size: 1.3rem; font-family: serif; }
 
         /* The Feed */
-        .feed {
-            padding: 0 40px; 
-        }
-        .post {
-            padding: 30px 0;
-            border-bottom: 1px solid #333;
-        }
+        .feed { padding: 0 40px; }
+        .post { padding: 30px 0; border-bottom: 1px solid #333; }
         .post-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            color: #aaa;
-            font-size: 1rem;
+            display: flex; align-items: center;
+            gap: 15px; margin-bottom: 15px;
+            color: #aaa; font-size: 1rem;
         }
-        .post-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: #ddd;
-        }
-        
-        .post-title {
-            font-size: 1.6rem;
-            margin: 0 0 15px 0;
-        }
+        .post-avatar { width: 45px; height: 45px; border-radius: 50%; background-color: #ddd; }
+        .post-title { font-size: 1.6rem; margin: 0 0 15px 0; }
 
         /* Tags */
-        .tags { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tag {
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
+        .tags { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tag { padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
         .tag-theory { background-color: #008000; color: #fff; }
         .tag-spoilers { background-color: #666; color: #fff; }
         .tag-guides { background-color: #d48800; color: #fff; }
 
-        .post-body {
-            font-size: 1.1rem; 
-            line-height: 1.5;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
+        .post-body { font-size: 1.1rem; line-height: 1.5; color: #ddd; margin-bottom: 20px; }
 
         /* Post Action Bar */
-        .action-bar {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+        .action-bar { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
         .comment-input {
-            flex-grow: 1;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #555;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 25px;
-            outline: none;
-            font-size: 1rem;
-            transition: 0.3s;
+            flex-grow: 1; background: rgba(255,255,255,0.05);
+            border: 1px solid #555; color: #fff; padding: 12px 20px;
+            border-radius: 25px; outline: none; font-size: 1rem; transition: 0.3s;
         }
         .comment-input:focus { border-color: #cc0000; background: rgba(0,0,0,0.5); }
-        .comment-input::placeholder { color: #888; }
         
         .action-btn {
-            background-color: #ddd;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: 0.2s;
+            background-color: #ddd; color: #000; border: none;
+            padding: 10px 20px; border-radius: 25px; font-weight: bold;
+            font-size: 0.95rem; display: flex; align-items: center; gap: 8px;
+            cursor: pointer; transition: 0.2s;
         }
-        
         .action-btn.liked .heart-icon { color: #cc0000; }
-        .heart-icon { color: #888; font-size: 1.2rem; transition: 0.2s; }
+        .heart-icon { color: #888; font-size: 1.2rem; }
 
-        /* Footer - Sticky Note is BACK! */
+        /* Footer */
         .footer {
             background-color: #0a0a0a;
             padding: 40px 20px;
             text-align: center;
             border-top: 3px solid #cc0000;
         }
-        .footer-logo { width: 120px; margin-bottom: 15px; } /* Added back */
+        .footer-logo { width: 120px; margin-bottom: 15px; } 
         .footer-text {
             color: #ffffff; font-family: 'Just Me Again Down Here', cursive;
             font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px;
+        }
+
+        /* --- MOBILE RESPONSIVE TWEAKS --- */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu {
+                display: none; position: absolute; top: 60px; right: 20px;
+                background-color: rgba(10, 10, 10, 0.95); padding: 20px; border-radius: 8px;
+                border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+                flex-direction: column; align-items: center; gap: 15px;
+            }
+            .nav-menu.active { display: flex; }
+
+            .banner { height: 200px; }
+            .profile-info, .feed { padding: 0 20px; }
+            .pfp-image { width: 120px; height: 120px; margin-top: -60px; }
+            .profile-header-row { flex-direction: column; gap: 15px; }
+            .edit-btn { width: 100%; }
+            .username { font-size: 1.5rem; }
+            .post-title { font-size: 1.3rem; }
+            .action-bar { flex-direction: column; align-items: stretch; }
+            .action-btn { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <nav class="top-nav">
-        <div class="audio-toggle" onclick="toggleAudio()">
-            <img src="images/playbutton.png" id="playBtn" alt="Play Music">
-            <img src="images/pausebutton.png" id="pauseBtn" class="pause-btn" alt="Pause Music">
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; 
         </div>
-        <div class="nav-links">
+
+        <div class="nav-menu" id="navMenu">
             <a href="hub.html">Community</a>
             <a href="world.html">Characters</a>
             <a href="merch.html">Merch</a>
@@ -240,14 +224,12 @@
     </nav>
 
     <div class="profile-wrapper">
-        
         <div class="banner"></div>
 
         <div class="profile-info">
-            
             <div class="pfp-container">
                 <img src="images/profile.png" class="pfp-image" alt="User Profile">
-                <div class="pfp-star" style="font-size: 50px; line-height: 1;">⭐</div>
+                <div class="pfp-star" style="font-size: 40px; line-height: 1;">⭐</div>
             </div>
 
             <div class="profile-header-row">
@@ -263,11 +245,9 @@
                 <span style="font-size: 35px;">⭐</span>
                 <span class="stat-text">wewewewe_12345 has<br>received 40K Likes</span>
             </div>
-
         </div>
 
         <div class="feed">
-
             <div class="post">
                 <div class="post-header">
                     <img src="images/profile.png" class="post-avatar" alt="Avatar">
@@ -307,27 +287,6 @@
                     </button>
                 </div>
             </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <img src="images/profile.png" class="post-avatar" alt="Avatar">
-                    <span>wewewewe_12345 &nbsp;&nbsp; 1 WK • 2.3k views</span>
-                </div>
-                <h2 class="post-title">The Narrator is Irking Me.</h2>
-                <div class="tags">
-                    <span class="tag tag-theory">Theory</span>
-                    <span class="tag tag-spoilers">Spoilers</span>
-                </div>
-                <p class="post-body">I feel like now since this is my third re-run of the game, I finally have time to actually listen to the narrator and.... he sounds like not the best person</p>
-                <div class="action-bar">
-                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
-                    <button class="action-btn">💬 300+</button>
-                    <button class="action-btn like-btn" onclick="toggleLike(this, 5.0)">
-                        <span class="heart-icon">❤️</span> <span class="like-count">5.0K</span>
-                    </button>
-                </div>
-            </div>
-
         </div> 
     </div>
 
@@ -337,13 +296,9 @@
     </div>
 
     <script>
-        let isPlaying = false;
-        function toggleAudio() {
-            const playBtn = document.getElementById('playBtn');
-            const pauseBtn = document.getElementById('pauseBtn');
-            if (isPlaying) { playBtn.style.display = 'block'; pauseBtn.style.display = 'none'; } 
-            else { playBtn.style.display = 'none'; pauseBtn.style.display = 'block'; }
-            isPlaying = !isPlaying;
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
         }
 
         function toggleLike(btn, baseCount) {
