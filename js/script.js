@@ -1,29 +1,67 @@
-const form = document.getElementById("loginForm");
+import { auth, db } from "./firebase.js";
+
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    doc,
+    setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+
 const errorMessage = document.getElementById("errorMessage");
 
-form.addEventListener("submit", function(e) {
+
+/* LOGIN */
+
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", async function(e)
+{
+
     e.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const email = document.getElementById("username").value;
 
-    if (username === "" || password === "") {
-        errorMessage.textContent = "All fields must be filled.";
+    const password = document.getElementById("password").value;
+
+
+
+    if(email === "" || password === "")
+    {
+        errorMessage.textContent = "All fields required.";
         return;
     }
 
-    if (password.length < 4) {
-        errorMessage.textContent = "Password too short.";
-        return;
+
+
+    try
+    {
+
+        await signInWithEmailAndPassword(auth, email, password);
+
+        alert("Welcome back.");
+
+        window.location.href = "hub.html";
+
     }
 
-    errorMessage.style.color = "#00ff88";
-    errorMessage.textContent = "Access granted...";
-    
-    setTimeout(() => {
-        alert("Welcome back, " + username + ".");
-    }, 800);
+    catch(error)
+    {
+
+        errorMessage.textContent = error.message;
+
+    }
+
+
 });
+
+
 
 
 function toggleForm()
