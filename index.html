@@ -12,9 +12,10 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #050505; /* Dark theme between images */
+            background-color: #050505;
             color: #ffffff;
             font-family: sans-serif;
+            overflow-x: hidden;
         }
 
         .jmadh-font {
@@ -23,14 +24,13 @@
 
         /* Full Screen Background Setup */
         .bg-section {
-            height: 100vh; /* Takes up the full height of the screen */
+            height: 100vh; 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Creates a cool parallax scrolling effect */
+            background-attachment: fixed; 
             background-repeat: no-repeat;
         }
 
-        /* Your Specific Backgrounds (Make sure these are in an 'images' folder!) */
         .bg1 { background-image: url('images/bg4index1.png'); position: relative; display: flex; justify-content: center; align-items: center; }
         .bg2 { background-image: url('images/bg4index2.png'); }
         .bg3 { background-image: url('images/bg4index3.png'); }
@@ -49,15 +49,35 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            z-index: 1000;
         }
 
         .audio-toggle img {
-            width: 40px; /* Keeps the buttons small */
+            width: 40px; 
             cursor: pointer;
         }
         
         .pause-btn {
-            display: none; /* Hidden by default until clicked */
+            display: none; 
+        }
+
+        /* Desktop Nav Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links-basic {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links-basic:hover {
+            color: #ff0000;
         }
 
         .login-btn {
@@ -68,21 +88,33 @@
             font-weight: bold;
             border-radius: 4px;
             transition: 0.3s;
+            white-space: nowrap;
         }
         
         .login-btn:hover { background-color: #cccccc; }
 
+        /* Mobile Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            margin-top: -5px;
+        }
+
         /* Section 1 Center Content */
         .hero-center {
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero-center img {
-            max-width: 150px; /* Adjust rotten apple size here */
+            max-width: 150px; 
         }
 
         .main-title {
-            color: #ff0000; /* Red text */
+            color: #ff0000; 
             font-size: 6rem;
             margin: 10px 0 0 0;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
@@ -95,7 +127,7 @@
             letter-spacing: 2px;
         }
 
-        /* Text Dividers Between Sections */
+        /* Text Dividers */
         .divider {
             padding: 80px 20px;
             text-align: center;
@@ -122,6 +154,66 @@
         }
 
         .signup-large:hover { background-color: #cc0000; }
+
+        /* Footer */
+        .footer {
+            background-color: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid #222;
+        }
+        .footer-logo {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+        .footer-text {
+            color: #ffffff;
+            font-family: 'Just Me Again Down Here', cursive;
+            font-size: 1.2rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* --- MOBILE RESPONSIVE TWEAKS --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block; 
+            }
+            .nav-menu {
+                display: none; 
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background-color: rgba(10, 10, 10, 0.95);
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid #333;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .nav-menu.active {
+                display: flex; 
+            }
+            .main-title {
+                font-size: 4rem;
+            }
+            .divider {
+                font-size: 2.5rem;
+                padding: 50px 20px;
+            }
+            .club-text {
+                font-size: 2rem;
+            }
+            .signup-large {
+                font-size: 1.8rem;
+                padding: 10px 25px;
+            }
+            .hero-center img {
+                max-width: 100px; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -134,7 +226,17 @@
                 <img src="images/pausebutton.png" id="pauseBtn" class="pause-btn" alt="Pause Music">
             </div>
             
-            <a href="login.html" class="login-btn">Login / Sign Up</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                &#9776; 
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="hub.html" class="nav-links-basic">Community</a>
+                <a href="characters.html" class="nav-links-basic">Characters</a>
+                <a href="merch.html" class="nav-links-basic">Merch</a>
+                <a href="profile.html" class="nav-links-basic">Profile</a>
+                <a href="login.html" class="login-btn">Login / Sign Up</a>
+            </div>
         </div>
 
         <div class="hero-center">
@@ -167,7 +269,16 @@
         <a href="login.html" class="signup-large jmadh-font">Sign Up</a>
     </section>
 
+    <div class="footer">
+        <img src="images/logos.png" class="footer-logo" alt="Dear Diary Note">
+        <p class="footer-text">Third Hour Co. All rights reserved.</p>
+    </div>
+
     <script>
+        // Your custom MP3 track
+        const bgMusic = new Audio('leiwin_project_music.mp3'); 
+        bgMusic.loop = true; // Keeps the creepy music playing on repeat
+
         let isPlaying = false;
         
         function toggleAudio() {
@@ -175,18 +286,24 @@
             const pauseBtn = document.getElementById('pauseBtn');
             
             if (isPlaying) {
-                // Currently playing, so pause it
+                // Pause the music
+                bgMusic.pause();
                 playBtn.style.display = 'block';
                 pauseBtn.style.display = 'none';
-                // Note: We can add actual audio code here later!
             } else {
-                // Currently paused, so play it
+                // Play the music
+                bgMusic.play();
                 playBtn.style.display = 'none';
                 pauseBtn.style.display = 'block';
-                // Note: We can add actual audio code here later!
             }
             
             isPlaying = !isPlaying;
+        }
+
+        // Dropdown Menu Logic
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
         }
     </script>
 </body>
