@@ -10,43 +10,36 @@
 
 <body class="auth-body">
 
-
     <div class="auth-wrapper">
-        
-        <!-- LOGO -->
+
+
+        <!-- FORM -->
         <h1 class="auth-logo">DEAR<br>DIARY</h1>
         <p class="auth-dev">Developed by Third Hour Co</p>
 
-        <!-- LOGIN FORM -->
+        <p id="errorMessage" style="color: red; text-align: center; font-weight: bold;"></p>
+
         <form class="auth-form" id="loginForm">
-
-            <input type="email" id="loginEmail" placeholder="Email" required>
-
-            <input type="password" id="loginPassword" placeholder="Password" required>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
 
             <button type="submit" class="auth-btn">
                 Login
             </button>
-
         </form>
-
 
         <form class="auth-form hidden" id="signupForm">
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="date" required>
 
-            <input type="text" id="signupUsername" placeholder="Username" required>
-
-            <input type="email" id="signupEmail" placeholder="Email" required>
-
-            <input type="password" id="signupPassword" placeholder="Password" required>
-
-            <input type="date" id="signupDOB" required>
-
-            <button type="submit" class="auth-btn">
+            <button type="submit" class="login-btn">
                 Sign Up
             </button>
-
         </form>
 
+       
 
 
         <p class="switch-text">
@@ -57,14 +50,13 @@
 
             </span>
 
-        <a href="#" onclick="toggleForm(); return false;">
+            <a href="#" onclick="toggleForm()">
+
             Sign up instead
-        </a>
 
+            </a>
 
-        </p>
-
-        
+            </p>
 
 
 
@@ -76,14 +68,6 @@
 
 
     </div>
-            <!-- SCRIPTS -->
-
-        <script type="module" src="js/script.js"></script>
-
-        <script type="module" src="js/firebase.js"></script>
-
-</body>
-</html>
 
 
 </body>
