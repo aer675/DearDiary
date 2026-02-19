@@ -60,3 +60,21 @@ label.innerText="Already a writer?";
 }
 
 }
+
+document.querySelectorAll(".auth-form").forEach(form =>
+{
+
+form.addEventListener("submit", function(e)
+{
+
+e.preventDefault();
+
+const username = form.querySelector("input[type=text]").value;
+
+localStorage.setItem("dd_user", username);
+
+window.location.href="hub.html";
+
+});
+
+});
