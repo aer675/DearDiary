@@ -173,3 +173,5 @@ function toggleForm()
     }
 
 }
+
+window.toggleForm = toggleForm;
