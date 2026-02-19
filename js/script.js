@@ -17,6 +17,7 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const errorMessage = document.getElementById("errorMessage");
 
 
+
 /* LOGIN */
 
 const loginForm = document.getElementById("loginForm");
@@ -64,55 +65,111 @@ loginForm.addEventListener("submit", async function(e)
 
 
 
+/* SIGNUP */
+
+const signupForm = document.getElementById("signupForm");
+
+signupForm.addEventListener("submit", async function(e)
+{
+
+    e.preventDefault();
+
+    const username = document.getElementById("signupUsername").value;
+
+    const email = document.getElementById("signupEmail").value;
+
+    const password = document.getElementById("signupPassword").value;
+
+    const dob = document.getElementById("signupDOB").value;
+
+
+
+    if(username === "" || email === "" || password === "" || dob === "")
+    {
+
+        alert("All fields required.");
+
+        return;
+
+    }
+
+
+
+    try
+    {
+
+        const userCredential =
+        await createUserWithEmailAndPassword(auth, email, password);
+
+
+        const user = userCredential.user;
+
+
+
+        await setDoc(doc(db, "users", user.uid),
+        {
+
+            username: username,
+
+            email: email,
+
+            dob: dob
+
+        });
+
+
+
+        alert("Account created successfully.");
+
+    }
+
+
+    catch(error)
+    {
+
+        alert(error.message);
+
+    }
+
+
+});
+
+
+
+
+/* SWITCH LOGIN / SIGNUP */
+
 function toggleForm()
 {
 
-const login = document.getElementById("loginForm");
+    const login = document.getElementById("loginForm");
 
-const signup = document.getElementById("signupForm");
+    const signup = document.getElementById("signupForm");
 
-const label = document.getElementById("switchLabel");
+    const label = document.getElementById("switchLabel");
 
 
 
-if(login.classList.contains("hidden"))
-{
+    if(login.classList.contains("hidden"))
+    {
 
-login.classList.remove("hidden");
+        login.classList.remove("hidden");
 
-signup.classList.add("hidden");
+        signup.classList.add("hidden");
 
-label.innerText="New to Writers of Dear Diary?";
+        label.innerText = "New to Writers of Dear Diary?";
+
+    }
+
+    else
+    {
+
+        login.classList.add("hidden");
+
+        signup.classList.remove("hidden");
+
+        label.innerText = "Already a writer?";
+
+    }
 
 }
-
-else
-{
-
-login.classList.add("hidden");
-
-signup.classList.remove("hidden");
-
-label.innerText="Already a writer?";
-
-}
-
-}
-
-document.querySelectorAll(".auth-form").forEach(form =>
-{
-
-form.addEventListener("submit", function(e)
-{
-
-e.preventDefault();
-
-const username = form.querySelector("input[type=text]").value;
-
-localStorage.setItem("dd_user", username);
-
-window.location.href="hub.html";
-
-});
-
-});
