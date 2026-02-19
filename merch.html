@@ -15,34 +15,42 @@
             background-color: #050505;
             font-family: sans-serif;
             color: #fff;
+            overflow-x: hidden;
         }
 
         .jmadh-font { font-family: 'Just Me Again Down Here', cursive; }
 
-        /* Navigation Bar (Reused) */
+        /* Navigation Bar */
         .top-nav {
             position: fixed; top: 0; left: 0; width: 100%;
             background-color: rgba(5, 5, 5, 0.95);
             padding: 15px 20px; box-sizing: border-box;
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: flex-end; /* Align to right since audio is gone */
+            align-items: center;
             z-index: 1000; border-bottom: 1px solid #333;
         }
-        .audio-toggle { display: flex; align-items: center; }
-        .audio-toggle img { width: 30px; cursor: pointer; }
-        .pause-btn { display: none; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a {
+
+        /* Desktop Nav Menu */
+        .nav-menu { display: flex; gap: 15px; align-items: center; }
+        .nav-menu a {
             color: #fff; text-decoration: none; font-weight: bold;
             font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; transition: 0.3s;
         }
-        .nav-links a:hover { background-color: #ff0000; color: #000; }
-        
-        /* Highlighting 'Merch' in the Navbar */
+        .nav-menu a:hover { background-color: #ff0000; color: #000; }
         .active-link { border-bottom: 2px solid #ff0000; }
+
+        /* Mobile Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            margin-top: -5px;
+        }
 
         /* Merch Main Container */
         .merch-container {
-            /* I added a dark gradient overlay so your text pops against the background! */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('images/merch2.png');
             background-size: cover;
             background-position: center;
@@ -52,13 +60,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 60px; /* Offsets the navbar */
+            padding: 80px 20px 40px 20px; /* Space for navbar */
             text-align: center;
+            box-sizing: border-box;
         }
 
         /* Merch Elements */
         .apple-icon {
-            width: 50px; /* Adjust size if needed */
+            width: 50px;
             margin-bottom: 15px;
             filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.8));
         }
@@ -82,16 +91,16 @@
 
         .closed-sign {
             max-width: 300px;
-            width: 80%;
+            width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.9);
             transition: transform 0.3s;
         }
         .closed-sign:hover {
-            transform: scale(1.05); /* Slight pop when hovered */
+            transform: scale(1.05);
         }
 
-        /* Footer from your screenshot */
+        /* Footer */
         .footer {
             background-color: #111;
             padding: 40px 20px;
@@ -99,7 +108,7 @@
             border-top: 2px solid #222;
         }
         .footer-logo {
-            width: 120px; /* For your sticky note logo */
+            width: 120px;
             margin-bottom: 15px;
         }
         .footer-text {
@@ -112,22 +121,41 @@
         .social-placeholder {
             color: #ffffff;
             font-family: sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 10px;
+            opacity: 0.7;
+        }
+
+        /* --- MOBILE RESPONSIVE TWEAKS --- */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu {
+                display: none; position: absolute; top: 60px; right: 20px;
+                background-color: rgba(10, 10, 10, 0.95); padding: 20px; border-radius: 8px;
+                border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+                flex-direction: column; align-items: center; gap: 15px;
+            }
+            .nav-menu.active { display: flex; }
+
+            .shop-title { font-size: 3.5rem; }
+            .shop-subtitle { font-size: 1.8rem; letter-spacing: 3px; }
+            .closed-sign { max-width: 250px; }
+            .social-placeholder { letter-spacing: 5px; }
         }
     </style>
 </head>
 <body>
 
     <nav class="top-nav">
-        <div class="audio-toggle" onclick="toggleAudio()">
-            <img src="images/playbutton.png" id="playBtn" alt="Play Music">
-            <img src="images/pausebutton.png" id="pauseBtn" class="pause-btn" alt="Pause Music">
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; 
         </div>
-        <div class="nav-links">
+
+        <div class="nav-menu" id="navMenu">
             <a href="hub.html">Community</a>
             <a href="world.html">Characters</a>
-            <a href="merch.html" class="active-link">Merch</a> <a href="profile.html">Profile</a>
+            <a href="merch.html" class="active-link">Merch</a>
+            <a href="profile.html">Profile</a>
         </div>
     </nav>
 
@@ -151,13 +179,10 @@
     </div>
 
     <script>
-        let isPlaying = false;
-        function toggleAudio() {
-            const playBtn = document.getElementById('playBtn');
-            const pauseBtn = document.getElementById('pauseBtn');
-            if (isPlaying) { playBtn.style.display = 'block'; pauseBtn.style.display = 'none'; } 
-            else { playBtn.style.display = 'none'; pauseBtn.style.display = 'block'; }
-            isPlaying = !isPlaying;
+        // Dropdown Menu Logic for Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
         }
     </script>
 </body>
