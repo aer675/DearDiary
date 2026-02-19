@@ -4,153 +4,93 @@
     <meta charset="UTF-8">
     <title>Dear Diary - Characters</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Styles & Background */
-      /* Base Styles & Background */
+        /* 1. FIXED THE BACKGROUND SCALING */
         body {
             margin: 0;
             padding: 0;
             background-color: #050505;
-            background-image: url('images/murder-board.png'); 
-            background-size: 100% auto; /* Fits the width perfectly, scales height */
-            background-position: top center; /* Starts at the very top of the board */
-            background-attachment: scroll; /* MAKES IT SCROLL WITH THE PAGE! */
-            background-repeat: repeat-y; /* If the page gets too long, the board continues */
+            background-image: url('images/murder-board.png');
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed; /* Frozen background looks cleaner on desktop */
             font-family: sans-serif;
             color: #fff;
         }
 
-        .jmadh-font {
-            font-family: 'Just Me Again Down Here', cursive;
-        }
+        .jmadh-font { font-family: 'Just Me Again Down Here', cursive; }
 
-        /* Top Navigation Bar */
         .top-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(10, 10, 10, 0.9); /* Slightly transparent black */
-            padding: 15px 20px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 2px solid #333;
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: rgba(5, 5, 5, 0.95); /* Darker top bar */
+            padding: 15px 20px; box-sizing: border-box;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid #333;
         }
 
-        /* Audio Toggle Area */
-        .audio-toggle {
-            display: flex;
-            align-items: center;
-        }
-        .audio-toggle img {
-            width: 30px;
-            cursor: pointer;
-        }
-        .pause-btn {
-            display: none;
-        }
+        .audio-toggle { display: flex; align-items: center; }
+        .audio-toggle img { width: 30px; cursor: pointer; }
+        .pause-btn { display: none; }
 
-        /* Navigation Links */
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
+        .nav-links { display: flex; gap: 15px; }
         .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: 0.3s;
+            color: #fff; text-decoration: none; font-weight: bold;
+            font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; transition: 0.3s;
         }
-        .nav-links a:hover {
-            background-color: #ff0000;
-            color: #000;
-        }
-        .active-link {
-            border-bottom: 2px solid #ff0000; /* Highlights the current page */
-        }
+        .nav-links a:hover { background-color: #ff0000; color: #000; }
+        .active-link { border-bottom: 2px solid #ff0000; }
 
-        /* Main Content - Stacked Characters */
+        /* 2. THE UPGRADE: DARK GLASS PANEL FOR CHARACTERS */
         .characters-container {
-            margin-top: 100px; /* Pushes content down so navbar doesn't cover it */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            padding-bottom: 60px;
+            margin-top: 100px; 
+            margin-bottom: 50px;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px; 
+            
+            /* This is the magic box! */
+            background-color: rgba(10, 10, 10, 0.85); /* Dark transparent background */
+            max-width: 350px; /* Keeps the column neat */
+            margin-left: auto; /* Centers the box */
+            margin-right: auto; /* Centers the box */
+            padding: 40px 20px;
+            border-radius: 12px; /* Smooth rounded corners */
+            box-shadow: 0 0 40px rgba(0,0,0,0.9); /* Deep shadow to separate from background */
+            border: 1px solid #222;
         }
 
-        .character-card {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .character-card:hover {
-            transform: scale(1.05); /* Slight zoom when hovered */
-        }
+        .character-card { cursor: pointer; transition: transform 0.3s; }
+        .character-card:hover { transform: scale(1.05); }
 
         .character-card img {
-            width: 200px; /* Adjust this to make the character portraits bigger/smaller */
-            border: 3px solid #fff;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            width: 160px; /* Slightly smaller so they fit nice in the box */
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
 
-        /* Modal (Pop-up) Styles */
+        /* Modal Styles remain the same */
         .modal-overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
+            justify-content: center; align-items: center;
         }
 
         .modal-box {
-            background-color: #efeade; /* A slightly aged paper color */
-            color: #000;
-            padding: 30px;
-            border-radius: 5px;
-            max-width: 400px;
-            width: 80%;
-            position: relative;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+            background-color: #efeade; color: #000; padding: 30px; border-radius: 5px;
+            max-width: 400px; width: 80%; position: relative; text-align: center;
+            box-shadow: 0 0 30px rgba(255,0,0,0.4);
         }
 
         .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #555;
+            position: absolute; top: 10px; right: 15px; font-size: 24px;
+            font-weight: bold; cursor: pointer; color: #555;
         }
         .close-btn:hover { color: #ff0000; }
-
-        .modal-title {
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            color: #8b0000; /* Dark blood red */
-        }
-
-        .modal-desc {
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
+        .modal-title { font-size: 3rem; margin: 0 0 10px 0; color: #8b0000; }
+        .modal-desc { font-size: 1.1rem; line-height: 1.5; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -160,7 +100,6 @@
             <img src="images/playbutton.png" id="playBtn" alt="Play Music">
             <img src="images/pausebutton.png" id="pauseBtn" class="pause-btn" alt="Pause Music">
         </div>
-        
         <div class="nav-links">
             <a href="hub.html">Community</a>
             <a href="characters.html" class="active-link">Characters</a>
@@ -169,7 +108,7 @@
         </div>
     </nav>
 
-    <div class="characters-container">
+   <div class="characters-container">
         
         <div class="character-card" onclick="openModal('Gu Wei Yi 顾唯一', 'A Singaporean Girl with her diary. Tries her best to fit in.')">
             <img src="images/weiyi.png" alt="Wei Yi">
@@ -185,51 +124,35 @@
 
     </div>
 
+
     <div class="modal-overlay" id="characterModal">
         <div class="modal-box">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 class="modal-title jmadh-font" id="modalName">Character Name</h2>
-            <p class="modal-desc" id="modalDescription">Character description goes here.</p>
+            <p class="modal-desc" id="modalDescription">Description.</p>
         </div>
     </div>
 
     <script>
-        // Audio Toggle Logic
         let isPlaying = false;
         function toggleAudio() {
             const playBtn = document.getElementById('playBtn');
             const pauseBtn = document.getElementById('pauseBtn');
-            if (isPlaying) {
-                playBtn.style.display = 'block';
-                pauseBtn.style.display = 'none';
-            } else {
-                playBtn.style.display = 'none';
-                pauseBtn.style.display = 'block';
-            }
+            if (isPlaying) { playBtn.style.display = 'block'; pauseBtn.style.display = 'none'; } 
+            else { playBtn.style.display = 'none'; pauseBtn.style.display = 'block'; }
             isPlaying = !isPlaying;
         }
 
-        // Modal (Pop-up) Logic
         const modal = document.getElementById('characterModal');
         const modalName = document.getElementById('modalName');
         const modalDesc = document.getElementById('modalDescription');
 
         function openModal(name, description) {
-            modalName.innerText = name;
-            modalDesc.innerText = description;
-            modal.style.display = 'flex'; // Shows the hidden box
+            modalName.innerText = name; modalDesc.innerText = description;
+            modal.style.display = 'flex';
         }
-
-        function closeModal() {
-            modal.style.display = 'none'; // Hides the box
-        }
-
-        // Close modal if user clicks the dark background outside the box
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        function closeModal() { modal.style.display = 'none'; }
+        window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
     </script>
 </body>
 </html>
