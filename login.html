@@ -10,6 +10,7 @@
 
 <body class="auth-body">
 
+
     <div class="auth-wrapper">
         
         <!-- LOGO -->
@@ -17,7 +18,8 @@
         <p class="auth-dev">Developed by Third Hour Co</p>
 
         <!-- FORM -->
-        <form class="auth-form">
+        <form class="auth-form" id="loginForm">
+
             <input type="text" placeholder="Username" required>
             <input type="password" placeholder="Password" required>
 
@@ -26,10 +28,39 @@
             </button>
         </form>
 
-        <p class="auth-alt">
-            New to Writers of Dear Diary?
-            <a href="signup.html">Sign up instead</a>
+        <form class="auth-form hidden" id="signupForm">
+
+            <input type="text" placeholder="Username">
+
+            <input type="email" placeholder="Email">
+
+            <input type="password" placeholder="Password">
+
+            <input type="date">
+
+            <button type="submit" class="login-btn">
+
+                Sign Up
+            </button>
+        </form>
+
+
+        <p class="switch-text">
+
+            <span id="switchLabel">
+
+                New to Writers of Dear Diary?
+
+            </span>
+
+        <a href="#" onclick="toggleForm()">
+
+            Sign up instead
+
+        </a>
+
         </p>
+
 
 
         <!-- FOOTER -->
@@ -40,11 +71,7 @@
 
 
     </div>
-
-        <div class="publisher-logo">
-            <img src="images/logos/logos.png" alt="Publisher Logo">
-        </div>
-
+        <script src="js/script.js"></script>
 
 </body>
 </html>

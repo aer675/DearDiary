@@ -24,3 +24,39 @@ form.addEventListener("submit", function(e) {
         alert("Welcome back, " + username + ".");
     }, 800);
 });
+
+
+function toggleForm()
+{
+
+const login = document.getElementById("loginForm");
+
+const signup = document.getElementById("signupForm");
+
+const label = document.getElementById("switchLabel");
+
+
+
+if(login.classList.contains("hidden"))
+{
+
+login.classList.remove("hidden");
+
+signup.classList.add("hidden");
+
+label.innerText="New to Writers of Dear Diary?";
+
+}
+
+else
+{
+
+login.classList.add("hidden");
+
+signup.classList.remove("hidden");
+
+label.innerText="Already a writer?";
+
+}
+
+}
