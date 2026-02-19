@@ -2,245 +2,527 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dear Diary - Community Hub</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            font-family: sans-serif;
+            color: #eaeaea;
+        }
 
+        .jmadh-font { font-family: 'Just Me Again Down Here', cursive; }
+
+        /* Navigation Bar */
+        .top-nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 20px; box-sizing: border-box;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid #333;
+        }
+        .audio-toggle { display: flex; align-items: center; }
+        .audio-toggle img { width: 30px; cursor: pointer; }
+        .pause-btn { display: none; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a {
+            color: #fff; text-decoration: none; font-weight: bold;
+            font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; transition: 0.3s;
+        }
+        .nav-links a:hover { background-color: #ff0000; color: #000; }
+        .active-link { border-bottom: 2px solid #ff0000; }
+
+        /* Hub Wrapper */
+        .hub-wrapper {
+            max-width: 800px; /* Wider for desktop reading */
+            margin: 0 auto;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* Header Banner */
+        .hub-header {
+            width: 100%;
+            height: 400px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('images/bg4hub.png');
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 2px solid #333;
+        }
+
+        .apple-icon {
+            width: 80px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.8));
+        }
+
+        .hub-title-red {
+            color: #cc0000;
+            font-size: 4.5rem;
+            margin: 0;
+            line-height: 0.9;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+
+        .hub-title-white {
+            color: #ffffff;
+            font-size: 3rem;
+            margin: 10px 0 0 0;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #0a0a0a;
+            position: sticky;
+            top: 60px; /* Sticks just below the navbar */
+            z-index: 900;
+            border-bottom: 1px solid #333;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .filter-btn:hover { opacity: 0.8; transform: scale(1.05); }
+        .filter-all { background-color: #444; }
+        .filter-theory { background-color: #008000; }
+        .filter-guides { background-color: #d48800; }
+        .filter-fanart { background-color: #a8425d; }
+        .filter-spoilers { background-color: #666; }
+
+        /* Active filter outline */
+        .active-filter { border: 2px solid #fff; }
+
+        /* Search Bar */
+        .search-container {
+            padding: 20px 40px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: none;
+            background-color: #ddd;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        /* The Feed */
+        .feed {
+            padding: 0 40px;
+        }
+
+        /* Post Styling matched to screenshot */
+        .post {
+            background-color: rgba(15, 15, 15, 0.8);
+            border: 2px solid #555;
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        .post-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+        .post-user { font-family: serif; font-size: 1.2rem; color: #fff; }
+        
+        .post-title { font-size: 1.8rem; margin: 0 0 15px 0; }
+
+        .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tag { padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
+        .tag-theory { background-color: #008000; color: #fff; }
+        .tag-spoilers { background-color: #666; color: #fff; }
+        .tag-guides { background-color: #d48800; color: #fff; }
+        .tag-fanart { background-color: #a8425d; color: #fff; }
+
+        .post-body { font-size: 1.1rem; line-height: 1.5; color: #ddd; margin-bottom: 20px; }
+
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #222; /* Fallback color */
+        }
+
+        /* Action Bar */
+        .action-bar { display: flex; gap: 15px; align-items: center; margin-top: 15px; }
+        .comment-input {
+            flex-grow: 1; background: rgba(255,255,255,0.05); border: 1px solid #555;
+            color: #fff; padding: 12px 20px; border-radius: 25px; outline: none; font-size: 1rem;
+        }
+        .comment-input:focus { border-color: #cc0000; }
+        
+        .action-btn {
+            background-color: #ddd; color: #000; border: none; padding: 10px 20px;
+            border-radius: 25px; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: 0.2s;
+        }
+        .action-btn.liked .heart-icon { color: #cc0000; }
+
+        /* Display User Comments */
+        .posted-comments { margin-top: 15px; }
+        .single-comment {
+            background-color: rgba(255,255,255,0.05);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-left: 3px solid #cc0000;
+        }
+
+        /* Footer */
+        .footer { background-color: #0a0a0a; padding: 40px 20px; text-align: center; border-top: 3px solid #cc0000; }
+        .footer-logo { width: 120px; margin-bottom: 15px; }
+        .footer-text { color: #ffffff; font-family: 'Just Me Again Down Here', cursive; font-size: 1.2rem; }
+    </style>
+</head>
 <body>
 
-    <div class="vignette"></div>
-    
-    <div class="mobile-container">
+    <nav class="top-nav">
+        <div class="audio-toggle" onclick="toggleAudio()"><img src="images/playbutton.png" id="playBtn"><img src="images/pausebutton.png" id="pauseBtn" class="pause-btn"></div>
+        <div class="nav-links">
+            <a href="hub.html" class="active-link">Community</a>
+            <a href="characters.html">Characters</a>
+            <a href="merch.html">Merch</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <div class="hub-wrapper">
         
-        <header>
-            <nav class="navbar">
-                <div class="menu-icon" onclick="toggleMenu()">☰</div>
-                <a href="login.html" class="auth-link">Login / Signup</a>
-            </nav>
-
-            <div id="sideNav" class="side-nav">
-                <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-                <a href="index.html">Home</a>
-                <a href="world.html">World</a>
-                <a href="merch.html">Merch</a>
-                <a href="hub.html">Community Hub</a>
-                <a href="profile.html">My Profile</a>
-            </div>
-        </header>
-
-        <main class="hub-container">
-            
-            <section class="hub-hero">
-                <h1 class="hub-title">DEAR<br>DIARY</h1>
-                <p class="hub-subtitle">COMMUNITY HUB</p>
-            </section>
-
-            <section class="hub-controls">
-                <div class="tag-filters">
-                    <button class="filter-btn tag-theory">Theory</button>
-                    <button class="filter-btn tag-guides">Guides</button>
-                    <button class="filter-btn tag-fanart">Fanart</button>
-                    <button class="filter-btn tag-spoilers">Spoilers</button>
-                </div>
-                
-                <div class="search-wrapper">
-                    <input type="text" placeholder="Search..." class="hub-search">
-                </div>
-            </section>
-
-            <section class="social-feed">
-
-                <article class="feed-card" onclick="openPost('post-1')">
-                    <div class="card-header">
-                        <div class="user-profile">
-                            <div class="avatar"></div> <span class="username">01123_w</span>
-                        </div>
-                        <span class="meta-info">2h • 1.9k views</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="post-title">Wei Yi is still alive</h3>
-                        <div class="post-tags">
-                            <span class="tag-badge tag-theory">Theory</span>
-                            <span class="tag-badge tag-spoilers">Spoilers</span>
-                        </div>
-                        <p class="post-text">
-                            The lore in the game and the website does not match at ALL. The website suggests that she is still alive, somewhere...
-                        </p>
-                    </div>
-
-                    <div class="card-actions">
-                        <div class="comment-input">Comment...</div>
-                        <div class="action-pill"><i class="fa-regular fa-comment"></i> 100+</div>
-                        <div class="action-pill"><i class="fa-regular fa-heart"></i> 500+</div>
-                    </div>
-                </article>
-
-                <article class="feed-card">
-                    <div class="card-header">
-                        <div class="user-profile">
-                            <div class="avatar"></div>
-                            <span class="username">aaaaawwe</span>
-                        </div>
-                        <span class="meta-info">12h • 12k views</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="post-title">Fanart of Wei Yi</h3>
-                        <div class="post-tags">
-                            <span class="tag-badge tag-fanart">Fanart</span>
-                        </div>
-                        <div class="post-image">
-                            <img src="img/hub/fanart1.png" alt="Wei Yi Fanart">
-                        </div>
-                    </div>
-
-                    <div class="card-actions">
-                        <div class="comment-input">Comment...</div>
-                        <div class="action-pill"><i class="fa-regular fa-comment"></i> 300+</div>
-                        <div class="action-pill"><i class="fa-regular fa-heart"></i> 305+</div>
-                    </div>
-                </article>
-
-                <article class="feed-card">
-                    <div class="card-header">
-                        <div class="user-profile">
-                            <div class="avatar"></div>
-                            <span class="username">helpp999</span>
-                        </div>
-                        <span class="meta-info">2h • 1.9k views</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="post-title">How to solve puzzle in School</h3>
-                        <div class="post-tags">
-                            <span class="tag-badge tag-guides">Guides</span>
-                            <span class="tag-badge tag-spoilers">Spoilers</span>
-                        </div>
-                        <p class="post-text">
-                            Here is a guide on how to solve the puzzle in school! Pro tip: Don't throw the empty refills of the pen away!
-                        </p>
-                    </div>
-
-                    <div class="card-actions">
-                        <div class="comment-input">Comment...</div>
-                        <div class="action-pill"><i class="fa-regular fa-comment"></i> 100+</div>
-                        <div class="action-pill"><i class="fa-regular fa-heart"></i> 300+</div>
-                    </div>
-                </article>
-
-            </section>
-        </main>
-
-        <footer class="global-footer">
-            <div class="footer-logo">DEAR<br>DIARY</div>
-            <p class="copyright-text">Third Hour Co. All rights reserved.</p>
-            
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-discord"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-        </footer>
-
-    </div> <div id="post-1" class="post-modal-overlay">
-        
-        <div class="modal-nav">
-            <button class="close-modal-btn" onclick="closePost('post-1')">
-                <i class="fa-solid fa-arrow-left"></i> Back
-            </button>
-            <span class="modal-title">Post Details</span>
+        <div class="hub-header">
+            <img src="images/rottenapple.png" class="apple-icon" alt="Apple">
+            <h1 class="hub-title-red jmadh-font">DEAR<br>DIARY</h1>
+            <h2 class="hub-title-white jmadh-font">COMMUNITY HUB</h2>
         </div>
 
-        <div class="modal-content">
+        <div class="filter-bar">
+            <button class="filter-btn filter-all active-filter" onclick="filterPosts('all', this)">All</button>
+            <button class="filter-btn filter-theory" onclick="filterPosts('theory', this)">Theory</button>
+            <button class="filter-btn filter-guides" onclick="filterPosts('guides', this)">Guides</button>
+            <button class="filter-btn filter-fanart" onclick="filterPosts('fanart', this)">Fanart</button>
+            <button class="filter-btn filter-spoilers" onclick="filterPosts('spoilers', this)">Spoilers</button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search...">
+        </div>
+
+        <div class="feed" id="postFeed">
+
+            <div class="post theory">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">O1123_w</span><span>2h • 1.9k views</span></div>
+                <h2 class="post-title">Wei Yi is still alive</h2>
+                <div class="tags"><span class="tag tag-theory">Theory</span><span class="tag tag-spoilers">Spoilers</span></div>
+                <p class="post-body">The lore in the game and the website does not match at ALL. The website suggests that she is still alive. somewhere ........</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 100+</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 300)"><span class="heart-icon">❤️</span> <span class="like-count">300</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post theory">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">Detective_X</span><span>5h • 800 views</span></div>
+                <h2 class="post-title">The Narrator is hiding something</h2>
+                <div class="tags"><span class="tag tag-theory">Theory</span></div>
+                <p class="post-body">If you listen closely to the audio logs in Chapter 2, the narrator stutters every time they mention the red string. They are lying to us.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 45</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 120)"><span class="heart-icon">❤️</span> <span class="like-count">120</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post theory">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">LoreHunter</span><span>1d • 3.2k views</span></div>
+                <h2 class="post-title">The school is built on a graveyard</h2>
+                <div class="tags"><span class="tag tag-theory">Theory</span></div>
+                <p class="post-body">Look at the newspaper clippings on the murder board. The dates line up perfectly with the old town cemetery demolition.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 210</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 890)"><span class="heart-icon">❤️</span> <span class="like-count">890</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post theory">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">CrimsonTide</span><span>2d • 1.1k views</span></div>
+                <h2 class="post-title">Mom's medicine is poisoning her</h2>
+                <div class="tags"><span class="tag tag-theory">Theory</span></div>
+                <p class="post-body">The 'hallucinations' note is pinned right next to the pills. The mom isn't sick, she's being kept compliant.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 80</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 400)"><span class="heart-icon">❤️</span> <span class="like-count">400</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post guides">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">Speedrunner99</span><span>10h • 5k views</span></div>
+                <h2 class="post-title">How to open the locked diary on Day 3</h2>
+                <div class="tags"><span class="tag tag-guides">Guides</span></div>
+                <p class="post-body">You need to collect the scissors from the bulletin board FIRST before you enter the classroom. Use them on the drawer.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 500</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 1200)"><span class="heart-icon">❤️</span> <span class="like-count">1200</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post guides">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">PuzzleMaster</span><span>1d • 2k views</span></div>
+                <h2 class="post-title">All umbrella puzzle locations</h2>
+                <div class="tags"><span class="tag tag-guides">Guides</span></div>
+                <p class="post-body">1. Library near the window. 2. Gym locker room. 3. Inside the principal's office desk.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 120</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 600)"><span class="heart-icon">❤️</span> <span class="like-count">600</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
             
-            <div class="post-detail-header">
-                <div class="user-profile">
-                    <div class="avatar"></div>
-                    <div class="user-info">
-                        <span class="username">01123_w</span>
-                        <span class="meta-info">2h • 1.9k views</span>
-                    </div>
+            <div class="post guides">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">NoHitGamer</span><span>3d • 8k views</span></div>
+                <h2 class="post-title">Surviving the hallway chase scene</h2>
+                <div class="tags"><span class="tag tag-guides">Guides</span></div>
+                <p class="post-body">Don't run straight! Duck into the janitor's closet immediately and wait for the heartbeat audio cue to stop before moving.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 900</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 2500)"><span class="heart-icon">❤️</span> <span class="like-count">2500</span></button>
                 </div>
-                
-                <h2 class="detail-title">Wei Yi is still alive</h2>
-                <div class="post-tags">
-                    <span class="tag-badge tag-theory">Theory</span>
-                    <span class="tag-badge tag-spoilers">Spoilers</span>
-                </div>
-                
-                <p class="detail-text">
-                    The lore in the game and the website does not match at ALL. The website suggests that she is still alive, somewhere...
-                </p>
-                
-                <div class="detail-actions">
-                    <div class="action-pill"><i class="fa-solid fa-heart"></i> 300+</div>
-                </div>
+                <div class="posted-comments"></div>
             </div>
 
-            <div class="comments-section">
-                <h4 class="comments-header">123 Comments</h4>
-
-                <div class="comment-block">
-                    <div class="comment-avatar"></div>
-                    <div class="comment-body">
-                        <div class="comment-meta">
-                            <span class="comment-user">ihatepeople4</span>
-                            <span class="comment-time">30m</span>
-                        </div>
-                        <p class="comment-text">No, she is DEAD. It literally shows at the end of the game, there were pills on the floor which means she OD'ed.</p>
-                        
-                        <div class="comment-actions">
-                            <span>Reply</span>
-                            <span><i class="fa-regular fa-heart"></i> 20+</span>
-                        </div>
-                    </div>
+            <div class="post guides">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">Completionist</span><span>1w • 10k views</span></div>
+                <h2 class="post-title">Where to find all of Wei Yi's torn pages</h2>
+                <div class="tags"><span class="tag tag-guides">Guides</span><span class="tag tag-spoilers">Spoilers</span></div>
+                <p class="post-body">A complete text walkthrough of all 15 page locations. Highly recommend doing this on your second playthrough.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 1.2k</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 4000)"><span class="heart-icon">❤️</span> <span class="like-count">4000</span></button>
                 </div>
-
-                <div class="comment-block reply">
-                    <div class="comment-avatar avatar-writer"></div>
-                    <div class="comment-body">
-                        <div class="comment-meta">
-                            <span class="comment-user user-highlight">01123_w</span>
-                            <span class="comment-role">writer</span>
-                            <span class="comment-time">30m</span>
-                        </div>
-                        <p class="comment-text">WEI YI IS STILL ALIVE</p>
-                        
-                        <div class="comment-actions">
-                            <span>Reply</span>
-                            <span><i class="fa-regular fa-heart"></i> 200+</span>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="posted-comments"></div>
             </div>
-        </div>
 
-        <div class="modal-footer-input">
-            <div class="user-avatar-small"></div>
-            <input type="text" placeholder="Comment..." class="dark-input">
-            <button class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
+            <div class="post fanart">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">aaaaawwe</span><span>12h • 12k views</span></div>
+                <h2 class="post-title">Fanart of Wei Yi</h2>
+                <div class="tags"><span class="tag tag-fanart">Fanart</span></div>
+                <img src="images/fanart1.png" class="post-image" alt="Wei Yi Fanart">
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 300+</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 5000)"><span class="heart-icon">❤️</span> <span class="like-count">5000</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post fanart">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">SketchyArtist</span><span>1d • 5k views</span></div>
+                <h2 class="post-title">The Mom looking creepy</h2>
+                <div class="tags"><span class="tag tag-fanart">Fanart</span></div>
+                <img src="images/fanart2.png" class="post-image" alt="Mom Fanart">
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 150</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 1200)"><span class="heart-icon">❤️</span> <span class="like-count">1200</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post fanart">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">InkWell</span><span>2d • 3k views</span></div>
+                <h2 class="post-title">The Bully Sketch</h2>
+                <div class="tags"><span class="tag tag-fanart">Fanart</span></div>
+                <img src="images/fanart3.png" class="post-image" alt="Bully Fanart">
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 90</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 800)"><span class="heart-icon">❤️</span> <span class="like-count">800</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post fanart">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">ApplePainter</span><span>4d • 2k views</span></div>
+                <h2 class="post-title">The Rotten Apple</h2>
+                <div class="tags"><span class="tag tag-fanart">Fanart</span></div>
+                <img src="images/rottenapple.png" class="post-image" style="object-fit: contain; background: #000;" alt="Rotten Apple Fanart">
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 60</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 450)"><span class="heart-icon">❤️</span> <span class="like-count">450</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post spoilers">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">EndgamePlayer</span><span>1h • 4k views</span></div>
+                <h2 class="post-title">Day 7 Ending Explained!</h2>
+                <div class="tags"><span class="tag tag-spoilers">Spoilers</span></div>
+                <p class="post-body">I can't believe it was her the whole time. If you chose the red umbrella dialogue on Day 2, you completely missed the alternate cutscene.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 340</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 900)"><span class="heart-icon">❤️</span> <span class="like-count">900</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post spoilers">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">SecretSeeker</span><span>5h • 2.2k views</span></div>
+                <h2 class="post-title">Who the Bully really works for</h2>
+                <div class="tags"><span class="tag tag-spoilers">Spoilers</span></div>
+                <p class="post-body">Read the crumpled note behind the principal's desk. The bully was being blackmailed. It changes everything about Chapter 4.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 120</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 750)"><span class="heart-icon">❤️</span> <span class="like-count">750</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post spoilers">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">StringTheory</span><span>1d • 6k views</span></div>
+                <h2 class="post-title">The true meaning of the red string</h2>
+                <div class="tags"><span class="tag tag-spoilers">Spoilers</span><span class="tag tag-theory">Theory</span></div>
+                <p class="post-body">It doesn't represent fate. It represents the narrator's control over the story. That's why cutting it unlocks the true ending.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 400</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 2000)"><span class="heart-icon">❤️</span> <span class="like-count">2000</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+            <div class="post spoilers">
+                <div class="post-header"><img src="images/profile.png" class="post-avatar"><span class="post-user">CreditWatcher</span><span>3d • 8.5k views</span></div>
+                <h2 class="post-title">Secret post-credits scene details</h2>
+                <div class="tags"><span class="tag tag-spoilers">Spoilers</span></div>
+                <p class="post-body">If you wait 5 minutes after the credits roll, the screen flashes to the murder board one last time, but the pins are moved.</p>
+                <div class="action-bar">
+                    <input type="text" class="comment-input" placeholder="Comment..." onkeypress="handleComment(event, this)">
+                    <button class="action-btn">💬 850</button>
+                    <button class="action-btn like-btn" onclick="toggleLike(this, 3100)"><span class="heart-icon">❤️</span> <span class="like-count">3100</span></button>
+                </div>
+                <div class="posted-comments"></div>
+            </div>
+
+        </div> 
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="footer">
+        <img src="images/sticky-logo.png" class="footer-logo" alt="Dear Diary Note">
+        <p class="footer-text">Third Hour Co. All rights reserved.</p>
+    </div>
+
     <script>
-        function openPost(id) {
-            document.getElementById(id).style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        // Audio Toggle
+        let isPlaying = false;
+        function toggleAudio() {
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            if (isPlaying) { playBtn.style.display = 'block'; pauseBtn.style.display = 'none'; } 
+            else { playBtn.style.display = 'none'; pauseBtn.style.display = 'block'; }
+            isPlaying = !isPlaying;
         }
 
-        function closePost(id) {
-            document.getElementById(id).style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+        // Like Button Function
+        function toggleLike(btn, baseCount) {
+            const countSpan = btn.querySelector('.like-count');
+            btn.classList.toggle('liked');
+            if (btn.classList.contains('liked')) {
+                countSpan.innerText = baseCount + 1; // Goes up by 1
+            } else {
+                countSpan.innerText = baseCount; // Goes back down
+            }
+        }
+
+        // Live Comment Function!
+        function handleComment(event, inputElement) {
+            if (event.key === 'Enter' && inputElement.value.trim() !== '') {
+                const commentText = inputElement.value;
+                const postContainer = inputElement.closest('.post');
+                const commentsDiv = postContainer.querySelector('.posted-comments');
+                
+                // Creates a new visible comment
+                const newComment = document.createElement('div');
+                newComment.className = 'single-comment';
+                newComment.innerHTML = `<strong style="color: #cc0000;">You:</strong> ${commentText}`;
+                
+                // Adds it to the post
+                commentsDiv.appendChild(newComment);
+                
+                // Clears the input box
+                inputElement.value = '';
+            }
+        }
+
+        // Filter Function
+        function filterPosts(category, clickedBtn) {
+            // Update the active button outline
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active-filter'));
+            clickedBtn.classList.add('active-filter');
+
+            // Show/Hide Posts
+            const posts = document.querySelectorAll('.post');
+            posts.forEach(post => {
+                if (category === 'all' || post.classList.contains(category)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
         }
     </script>
-
 </body>
 </html>
