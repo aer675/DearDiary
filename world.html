@@ -25,19 +25,32 @@
             position: fixed; top: 0; left: 0; width: 100%;
             background-color: rgba(5, 5, 5, 0.95);
             padding: 15px 20px; box-sizing: border-box;
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: space-between; align-items: flex-start;
             z-index: 1000; border-bottom: 1px solid #333;
         }
+        
         .audio-toggle { display: flex; align-items: center; }
         .audio-toggle img { width: 30px; cursor: pointer; }
         .pause-btn { display: none; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a {
+        
+        /* Desktop Nav Menu */
+        .nav-menu { display: flex; gap: 15px; align-items: center; }
+        .nav-menu a {
             color: #fff; text-decoration: none; font-weight: bold;
             font-size: 0.9rem; padding: 5px 10px; border-radius: 4px; transition: 0.3s;
         }
-        .nav-links a:hover { background-color: #ff0000; color: #000; }
+        .nav-menu a:hover { background-color: #ff0000; color: #000; }
         .active-link { border-bottom: 2px solid #ff0000; }
+
+        /* Mobile Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            margin-top: -5px;
+        }
 
         /* Section Layouts */
         .board-section {
@@ -55,12 +68,12 @@
             background-size: 102% auto; 
         }
 
-        /* Center Character Portraits - BORDER REMOVED */
+        /* Center Character Portraits */
         .center-char {
             z-index: 10;
             width: 220px;
             cursor: pointer;
-            border: none; /* Removed the white border */
+            border: none;
             box-shadow: 0 15px 30px rgba(0,0,0,0.9);
             transition: transform 0.3s;
             background-color: #000;
@@ -85,27 +98,23 @@
             pointer-events: none;
         }
 
-        /* --- EXACT IMAGE PLACEMENTS FROM SCREENSHOTS --- */
-        
-        /* Section 1 (Wei Yi) Spots */
-        .s1-item1 { top: 15%; left: 8%; transform: rotate(-15deg); max-width: 200px; } /* Arm */
-        .s1-item2 { top: 25%; right: 10%; transform: rotate(12deg); max-width: 160px; } /* Report Card */
-        .s1-item3 { bottom: 15%; left: 12%; transform: rotate(8deg); max-width: 190px; } /* School Girl Missing */
-        .s1-item4 { bottom: 20%; right: 15%; transform: rotate(-10deg); max-width: 170px; } /* Notebook Paper */
-        .text-1 { top: 12%; left: 35%; transform: rotate(-5deg); } /* "autopsy shows..." */
+        /* --- EXACT IMAGE PLACEMENTS --- */
+        .s1-item1 { top: 15%; left: 8%; transform: rotate(-15deg); max-width: 200px; } 
+        .s1-item2 { top: 25%; right: 10%; transform: rotate(12deg); max-width: 160px; } 
+        .s1-item3 { bottom: 15%; left: 12%; transform: rotate(8deg); max-width: 190px; } 
+        .s1-item4 { bottom: 20%; right: 15%; transform: rotate(-10deg); max-width: 170px; } 
+        .text-1 { top: 12%; left: 35%; transform: rotate(-5deg); } 
 
-        /* Section 2 (The Mom) Spots */
-        .s2-item5 { top: 15%; right: 12%; transform: rotate(-12deg); max-width: 190px; } /* Woman Found Dead */
-        .s2-item6 { top: 35%; left: 8%; transform: rotate(-8deg); max-width: 170px; z-index: 5; } /* Document */
-        .s2-item7 { top: 22%; left: 18%; transform: rotate(15deg); max-width: 180px; z-index: 6; } /* Umbrella Couple (Overlaps) */
-        .s2-item9 { bottom: 20%; right: 15%; transform: rotate(5deg); max-width: 180px; } /* Woman Out For Blood */
-        .text-2 { bottom: 28%; left: 22%; transform: rotate(10deg); } /* "hallucinations?" */
+        .s2-item5 { top: 15%; right: 12%; transform: rotate(-12deg); max-width: 190px; } 
+        .s2-item6 { top: 35%; left: 8%; transform: rotate(-8deg); max-width: 170px; z-index: 5; } 
+        .s2-item7 { top: 22%; left: 18%; transform: rotate(15deg); max-width: 180px; z-index: 6; } 
+        .s2-item9 { bottom: 20%; right: 15%; transform: rotate(5deg); max-width: 180px; } 
+        .text-2 { bottom: 28%; left: 22%; transform: rotate(10deg); } 
 
-        /* Section 3 (The Bully) Spots */
-        .s3-item10 { top: 32%; left: 22%; transform: rotate(-25deg); max-width: 120px; } /* Scissors */
-        .s3-item11 { top: 40%; left: 10%; transform: rotate(5deg); max-width: 180px; z-index: 4; } /* Local Boy Disappears */
-        .s3-item6-dup { bottom: 15%; left: 8%; transform: rotate(15deg); max-width: 170px; } /* Document (Duplicate) */
-        .text-3 { top: 20%; right: 18%; transform: rotate(-8deg); } /* "it doesn't make sense." */
+        .s3-item10 { top: 32%; left: 22%; transform: rotate(-25deg); max-width: 120px; } 
+        .s3-item11 { top: 40%; left: 10%; transform: rotate(5deg); max-width: 180px; z-index: 4; } 
+        .s3-item6-dup { bottom: 15%; left: 8%; transform: rotate(15deg); max-width: 170px; } 
+        .text-3 { top: 20%; right: 18%; transform: rotate(-8deg); } 
 
         /* Modal Styles */
         .modal-overlay {
@@ -125,6 +134,30 @@
         .close-btn:hover { color: #ff0000; }
         .modal-title { font-size: 3rem; margin: 0 0 10px 0; color: #8b0000; }
         .modal-desc { font-size: 1.1rem; line-height: 1.5; font-weight: bold; }
+
+        /* --- MOBILE RESPONSIVE TWEAKS --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block; 
+            }
+            .nav-menu {
+                display: none; 
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: rgba(10, 10, 10, 0.95);
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid #333;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .nav-menu.active {
+                display: flex; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -134,7 +167,12 @@
             <img src="images/playbutton.png" id="playBtn" alt="Play Music">
             <img src="images/pausebutton.png" id="pauseBtn" class="pause-btn" alt="Pause Music">
         </div>
-        <div class="nav-links">
+
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; 
+        </div>
+
+        <div class="nav-menu" id="navMenu">
             <a href="hub.html">Community</a>
             <a href="characters.html" class="active-link">Characters</a>
             <a href="merch.html">Merch</a>
@@ -180,14 +218,31 @@
     </div>
 
     <script>
+        // Audio Setup
+        const bgMusic = new Audio('leiwin_project_music.mp3'); 
+        bgMusic.loop = true; 
+
         // Audio Toggle
         let isPlaying = false;
         function toggleAudio() {
             const playBtn = document.getElementById('playBtn');
             const pauseBtn = document.getElementById('pauseBtn');
-            if (isPlaying) { playBtn.style.display = 'block'; pauseBtn.style.display = 'none'; } 
-            else { playBtn.style.display = 'none'; pauseBtn.style.display = 'block'; }
+            if (isPlaying) { 
+                bgMusic.pause();
+                playBtn.style.display = 'block'; 
+                pauseBtn.style.display = 'none'; 
+            } else { 
+                bgMusic.play();
+                playBtn.style.display = 'none'; 
+                pauseBtn.style.display = 'block'; 
+            }
             isPlaying = !isPlaying;
+        }
+
+        // Dropdown Menu Logic
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
         }
 
         // Modal Logic
