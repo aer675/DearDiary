@@ -45,7 +45,7 @@ The design focuses on creating a haunting, personal atmosphere similar to discov
     * Custom font-face declarations
 * **[Figma](https://figma.com/)**
     * Mobile design mockups and visual planning
-* **[GitHub](https://github.com/)**
+* **[GitHub](https://aer675.github.io/DearDiary/)**
     * Version control and project hosting
 
 ## Testing
